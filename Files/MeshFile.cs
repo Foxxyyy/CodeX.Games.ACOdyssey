@@ -10,11 +10,11 @@ namespace CodeX.Games.ACOdyssey.Files
 {
     public class MeshFile : PiecePack
     {
-        public ForgeModel? Model;
+        public ForgeModel Model;
         public JenkHash Hash;
         public string Name;
 
-        public MeshFile(ForgeEntry? file) : base(file)
+        public MeshFile(ForgeEntry file) : base(file)
         {
             Name = file?.NameLower ?? string.Empty;
             Hash = JenkHash.GenHash(file?.NameLower ?? string.Empty);
@@ -79,7 +79,6 @@ namespace CodeX.Games.ACOdyssey.Files
                 model.UpdateBounds();
                 model.Name = Name;
                 model.BoundingSphere = new BoundingSphere(model.BoundingBox.Center, model.BoundingBox.Size.Length() * 0.5f);
-
                 Pieces.Add(JenkHash.GenHash(Name), model);
             }
         }

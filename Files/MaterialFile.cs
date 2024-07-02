@@ -12,8 +12,8 @@ namespace CodeX.Games.ACOdyssey.Files
     public class MaterialFile
     {
         public ForgeMaterial Material;
-        public List<ForgeTexture>? EmbeddedTextures;
-        public List<ForgeTextureSet>? EmbeddedTextureSets;
+        public List<ForgeTexture> EmbeddedTextures;
+        public List<ForgeTextureSet> EmbeddedTextureSets;
         public JenkHash Hash;
         public string Name;
 
@@ -115,11 +115,13 @@ namespace CodeX.Games.ACOdyssey.Files
                 sb.AppendLine(string.Format("WaterClipMaterial: {0}", Material.WaterClipMaterial));
                 sb.AppendLine(string.Format("ForceRenderInFakeBucket: {0}", Material.ForceRenderInFakeBucket));
                 sb.AppendLine(string.Format("SSAOOnDiffuse: {0}", Material.SSAOOnDiffuse));
+
                 if (Material.BackFaceMaterial != null)
                 {
                     var backFaceEntry = ForgeFile.FindEntryByFileID(archives, Material.BackFaceMaterial.FileID);
                     sb.AppendLine(string.Format("BackFaceMaterial: 0x{0} ({1})", Material.BackFaceMaterial.FileID.ToString("X"), backFaceEntry != null ? backFaceEntry.Name : "Unknown"));
                 }
+
                 sb.AppendLine(string.Format("TangentShift1: {0}", Material.TangentShift1));
                 sb.AppendLine(string.Format("TangentShift2: {0}", Material.TangentShift2));
                 sb.AppendLine(string.Format("DiffuseDarkening: {0}", Material.DiffuseDarkening));

@@ -30,3 +30,4 @@ C:\Research\CodeX\CodeX-021\Codex.Games.ACOdyssey\bin\Debug\net7.0-windows\CodeX
 C:\Research\CodeX\CodeX-021\Codex.Games.ACOdyssey\bin\Debug\net7.0-windows\CodeX.Core.pdb
 C:\Research\CodeX\CodeX-021\Codex.Games.ACOdyssey\obj\Debug\net7.0-windows\CodeX.Games.ACOdyssey.csproj.CopyComplete
 C:\Research\CodeX\CodeX-021\Codex.Games.ACOdyssey\obj\Debug\net7.0-windows\ref\CodeX.Games.ACOdyssey.dll
+C:\Research\CodeX\CodeX-021\Codex.Games.ACOdyssey\obj\Debug\net7.0-windows\CodeX.Games.ACOdyssey.sourcelink.json

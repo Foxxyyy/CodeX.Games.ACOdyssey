@@ -10,11 +10,11 @@ namespace CodeX.Games.ACOdyssey.Files
 {
     public class LODSelectorFile
     {
-        public ForgeEntry? Entry;
-        public ForgeLODSelector? LODSelector;
-        public Dictionary<ForgeModel, byte[]?>? EmbeddedMeshes;
-        public List<ForgeMaterial>? EmbeddedMaterials;
-        public List<ForgeTextureSet>? EmbeddedTextureSets;
+        public ForgeEntry Entry;
+        public ForgeLODSelector LODSelector;
+        public Dictionary<ForgeModel, byte[]> EmbeddedMeshes;
+        public List<ForgeMaterial> EmbeddedMaterials;
+        public List<ForgeTextureSet> EmbeddedTextureSets;
         public JenkHash Hash;
         public string Name;
 
@@ -39,7 +39,7 @@ namespace CodeX.Games.ACOdyssey.Files
             LODSelector = new ForgeLODSelector();
             LODSelector.Read(reader);
 
-            EmbeddedMeshes = new Dictionary<ForgeModel, byte[]?>();
+            EmbeddedMeshes = new Dictionary<ForgeModel, byte[]>();
             EmbeddedMaterials = new List<ForgeMaterial>();
             EmbeddedTextureSets = new List<ForgeTextureSet>();
 

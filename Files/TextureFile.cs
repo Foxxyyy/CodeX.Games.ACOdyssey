@@ -9,7 +9,7 @@ namespace CodeX.Games.ACOdyssey.Files
 {
     public class TextureFile : TexturePack
     {
-        public ForgeTexture? Texture;
+        public ForgeTexture Texture;
 
         public TextureFile(ForgeEntry file) : base(file)
         {

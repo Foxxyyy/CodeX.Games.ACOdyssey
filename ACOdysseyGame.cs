@@ -1,6 +1,8 @@
 ﻿using CodeX.Games.ACOdyssey.FORGE;
 using CodeX.Core.Engine;
 using System.IO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CodeX.Games.ACOdyssey
 {
@@ -27,24 +29,40 @@ namespace CodeX.Games.ACOdyssey
 
         public override bool AutoDetectGameFolder(out string source)
         {
-            source = string.Empty;
+            if (AutoDetectFolder(out Dictionary<string, string> matches))
+            {
+                var match = matches.First();
+                source = match.Key;
+                GameFolder = match.Value.Trim().TrimEnd('/', '\\', ' ');
+                return true;
+            }
+            source = null;
             return false;
         }
 
-        public override FileManager GetFileManager()
+        public override FileManager CreateFileManager()
         {
-            FileManager ??= new ForgeFileManager(this);
-            return FileManager;
+            return new ForgeFileManager(this);
         }
 
-        public override Level? GetMapLevel()
+        public override Level GetMapLevel()
         {
             return null;
         }
 
-        public override Setting[]? GetMapSettings()
+        public override Setting[] GetMapSettings()
         {
             return null;
+        }
+
+        private bool AutoDetectFolder(out Dictionary<string, string> matches)
+        {
+            matches = new Dictionary<string, string>();
+            if (CheckGameFolder(GameFolder))
+            {
+                matches.Add("Current CodeX Folder", GameFolder);
+            }
+            return matches.Count > 0;
         }
     }
 }

@@ -1,21 +1,19 @@
-﻿using BepuUtilities;
-using CodeX.Core.Engine;
+﻿using CodeX.Core.Engine;
 using CodeX.Core.Numerics;
 using CodeX.Core.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using BoundingSphere = CodeX.Core.Numerics.BoundingSphere;
 
 namespace CodeX.Games.ACOdyssey.Files
 {
     public class MeshGroupFile : PiecePack
     {
-        public EntityGroupFile? EntityGroup { get; set; }
-        public List<PiecePack?>? Models { get; set; }
+        public EntityGroupFile EntityGroup { get; set; }
+        public List<PiecePack> Models { get; set; }
         public int ModelsCount { get; set; }
 
-        public MeshGroupFile(List<PiecePack?> pieces, EntityGroupFile group)
+        public MeshGroupFile(List<PiecePack> pieces, EntityGroupFile group)
         {
             EntityGroup = group;
             Models = pieces;

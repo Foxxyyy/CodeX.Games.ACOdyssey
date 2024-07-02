@@ -1,16 +1,13 @@
 ﻿using CodeX.Core.Engine;
-using CodeX.Core.Formats.Nif;
 using CodeX.Core.Numerics;
 using CodeX.Core.Utilities;
 using CodeX.Games.ACOdyssey.Files;
 using CodeX.Games.ACOdyssey.Resources;
-using SharpDX.Direct2D1;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Numerics;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CodeX.Games.ACOdyssey.FORGE
 {
@@ -19,7 +16,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
         public override string ArchiveTypeName => "FORGE";
         public override string ArchiveExtension => ".forge";
 
-        public ForgeDataFileMgr? DataFileMgr { get; set; }
+        public ForgeDataFileMgr DataFileMgr { get; set; }
 
         public ForgeFileManager(Game game) : base(game)
         {
@@ -125,15 +122,15 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return filename.EndsWith(ArchiveExtension);
         }
 
-        public override GameArchive? GetArchive(string path, string relpath)
+        public override GameArchive GetArchive(string path, string relpath)
         {
-            if ((StartupCache != null) && StartupCache.TryGetValue(path, out GameArchive? archive))
+            if ((StartupCache != null) && StartupCache.TryGetValue(path, out GameArchive archive))
             {
                 return archive;
             }
             var rpf = new ForgeFile(path, relpath);
             rpf?.ReadStructure();
-            return rpf ?? null;
+            return rpf;
         }
 
         public override void InitCreateInfos()
@@ -161,12 +158,12 @@ namespace CodeX.Games.ACOdyssey.FORGE
             throw new NotImplementedException();
         }
 
-        public override GameArchiveFileInfo? CreateFileEntry(string name, string path, ref byte[] data)
+        public override GameArchiveFileInfo CreateFileEntry(string name, string path, ref byte[] data)
         {
             return null;
         }
 
-        public override void Defragment(GameArchive file, Action<string, float>? progress = null)
+        public override void Defragment(GameArchive file, Action<string, float> progress = null)
         {
             throw new NotImplementedException();
         }
@@ -260,17 +257,22 @@ namespace CodeX.Games.ACOdyssey.FORGE
             throw new NotImplementedException();
         }
 
-        public override AudioPack LoadAudioPack(GameArchiveFileInfo file, byte[]? data = null)
+        public override AudioPack LoadAudioPack(GameArchiveFileInfo file, byte[] data = null)
         {
             throw new NotImplementedException();
         }
 
-        public override DataBag2 LoadMetadata(GameArchiveFileInfo file, byte[]? data = null)
+        public override DataBag2 LoadMetadata(GameArchiveFileInfo file, byte[] data = null)
         {
             throw new NotImplementedException();
         }
 
-        public override PiecePack? LoadPiecePack(GameArchiveFileInfo file, byte[]? data = null, bool loadDependencies = false)
+        public override T LoadMetaNode<T>(GameArchiveFileInfo file, byte[] data = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override PiecePack LoadPiecePack(GameArchiveFileInfo file, byte[] data = null, bool loadDependencies = false)
         {
             data = EnsureFileData(file, data);
 
@@ -291,7 +293,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
                 var entGroup = new EntityGroupFile(entry);
                 entGroup.Load(data);
 
-                var group = new List<PiecePack?>();
+                var group = new List<PiecePack>();
                 var objects = GetEntitiesFromEntityGroup(entGroup);
 
                 for (int i = 0; i < objects.Item1?.Length; i++)
@@ -310,7 +312,6 @@ namespace CodeX.Games.ACOdyssey.FORGE
                 }
 
                 var pieces = InstanciatePieces(group, entGroup, objects.Item2!);
-
                 var model = new MeshGroupFile(pieces, entGroup);
                 model.Load(data);
 
@@ -319,7 +320,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return null;
         }
 
-        public override TexturePack? LoadTexturePack(GameArchiveFileInfo file, byte[]? data = null)
+        public override TexturePack LoadTexturePack(GameArchiveFileInfo file, byte[] data = null)
         {
             data = EnsureFileData(file, data);
 
@@ -331,38 +332,41 @@ namespace CodeX.Games.ACOdyssey.FORGE
                 var tex = new TextureFile(entry);
                 tex.Load(data);
 
-                //Data is located elsewhere
-                if (tex.Texture?.Data == null)
+                //Data is located somewhere else
+                if (tex.Texture != null && tex.Texture.Data != null)
                 {
-                    var mipEntry = entry.Archive.AllEntries.FirstOrDefault(e => e.Name == tex.Texture?.Name + "_TopMip_0");
+                    var mipEntry0 = entry.Archive.AllEntries.FirstOrDefault(e => e.Name == tex.Texture.Name + "_TopMip_0");
 
                     //Data is in a different archive...
-                    if (mipEntry == null)
+                    if (mipEntry0 == null)
                     {
                         foreach (var archive in AllArchives)
                         {
-                            mipEntry = archive.AllEntries.FirstOrDefault(e => e.Name == tex.Texture?.Name + "_TopMip_0");
-                            if (mipEntry != null)
+                            mipEntry0 = archive.AllEntries.FirstOrDefault(e => e.Name == tex.Texture.Name + "_TopMip_0");
+                            if (mipEntry0 != null)
+                            {
                                 break;
+                            }
                         }
                     }
-                    if (DataFileMgr?.StreamEntries?[ForgeResourceType.MIPMAP].TryGetValue(JenkHash.GenHash(mipEntry?.Name.ToLowerInvariant()), out ForgeEntry? sEntry) == true)
+
+                    var entries = DataFileMgr?.StreamEntries?[ForgeResourceType.MIPMAP];
+                    if (entries.TryGetValue(JenkHash.GenHash(mipEntry0?.Name.ToLowerInvariant()), out ForgeEntry sEntry0))
                     {
-                        byte[] mipData = EnsureFileData(sEntry, null);
-                        if (mipData != null)
+                        var mipData0 = EnsureFileData(sEntry0, null);
+                        if (mipData0 != null)
                         {
-                            var mipReader = new DataReader(new MemoryStream(mipData));
-                            tex.Texture?.ReadMipData(mipReader);
+                            var mipReader = new DataReader(new MemoryStream(mipData0));
+                            tex.Texture.Data = tex.Texture.ReadMipData(mipReader);
                         }
-                    }
-                    
+                    }               
                 }
                 return tex;
             }
             return null;
         }
 
-        public List<PiecePack?> InstanciatePieces(List<PiecePack?> pieces, EntityGroupFile groupFile, List<byte[]?> data)
+        public List<PiecePack> InstanciatePieces(List<PiecePack> pieces, EntityGroupFile groupFile, List<byte[]> data)
         {
             if (groupFile.EntityGroup.Components == null || data == null)
             {
@@ -370,10 +374,10 @@ namespace CodeX.Games.ACOdyssey.FORGE
             }
 
             int c, i;
-            var instanciatedPieces = new List<PiecePack?>();
+            var instanciatedPieces = new List<PiecePack>();
             for (c = 0; c < groupFile.EntityGroup.Components.Length - 2; c++)
             {
-                var piece = (MeshFile?)pieces[c];
+                var piece = (MeshFile)pieces[c];
                 if (piece == null)
                 {
                     continue;
@@ -441,14 +445,14 @@ namespace CodeX.Games.ACOdyssey.FORGE
             piece.BoundingSphere = new BoundingSphere(piece.BoundingBox.Center, piece.BoundingBox.Size.Length() * 0.5f);
         }
 
-        public (object[]?, List<byte[]?>?) GetEntitiesFromEntityGroup(EntityGroupFile groupFile)
+        public (object[], List<byte[]>) GetEntitiesFromEntityGroup(EntityGroupFile groupFile)
         {
             if (groupFile.EntityGroup == null || groupFile.EntityGroup.Components == null)
             {
                 return (null, null);
             }
 
-            var entities = (new List<object>(), new List<byte[]?>());
+            var entities = (new List<object>(), new List<byte[]>());
             for (int i = 0; i < groupFile.EntityGroup.Components.Length; i++)
             {
                 var comp = groupFile.EntityGroup.Components[i];
@@ -480,9 +484,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return (entities.Item1.ToArray(), entities.Item2);
         }
 
-        public (object?, byte[]?) LoadLODSelector(long fileID, ForgeLODSelector? lod = null)
+        public (object, byte[]) LoadLODSelector(long fileID, ForgeLODSelector lod = null)
         {
-            LODSelectorFile? lodSelector = null;
+            LODSelectorFile lodSelector = null;
             if (fileID != 0)
             {
                 var data = GetEntryFromAllArchives(fileID);
@@ -535,7 +539,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return (null, null);
         }
 
-        public (ForgeEntry?, byte[]?) GetEntryFromAllArchives(long fileID)
+        public (ForgeEntry, byte[]) GetEntryFromAllArchives(long fileID)
         {
             foreach (var archive in AllArchives)
             {
@@ -552,7 +556,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return (null, null);
         }
 
-        public void LoadDependencies(ForgeModel? model)
+        public void LoadDependencies(ForgeModel model)
         {
             if (model == null || model.Meshes == null)
                 return;
@@ -561,7 +565,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             if (materials == null || materials.Length == 0)
                 return;
 
-            var textureSet = new ForgeTextureSet?[materials.Length];
+            var textureSet = new ForgeTextureSet[materials.Length];
             for (int i = 0; i < materials.Length; i++)
             {
                 textureSet[i] = LoadTextureSet(materials[i]);
@@ -630,7 +634,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             }
         }
 
-        public ForgeMaterial[]? LoadMaterials(ForgeModel model)
+        public ForgeMaterial[] LoadMaterials(ForgeModel model)
         {
             var materialsID = new List<long>();
             foreach (var meshData in model.CompiledMesh?.InstancingData ?? Enumerable.Empty<ForgeMeshInstancingData>())
@@ -666,7 +670,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return materials.ToArray();
         }
 
-        public ForgeTextureSet? LoadTextureSet(ForgeMaterial material)
+        public ForgeTextureSet LoadTextureSet(ForgeMaterial material)
         {
             if (material == null || material.TextureSet == null)
                 return null;
@@ -772,7 +776,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class ForgeDataFileMgr
     {
         public ForgeFileManager FileManager;
-        public Dictionary<ForgeResourceType, Dictionary<JenkHash, ForgeEntry>>? StreamEntries;
+        public Dictionary<ForgeResourceType, Dictionary<JenkHash, ForgeEntry>> StreamEntries;
 
         public ForgeDataFileMgr(ForgeFileManager fman)
         {
@@ -801,7 +805,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             }
         }
 
-        public ForgeEntry? TryGetStreamEntry(JenkHash hash, ForgeResourceType ext)
+        public ForgeEntry TryGetStreamEntry(JenkHash hash, ForgeResourceType ext)
         {
             if (StreamEntries != null && StreamEntries.TryGetValue(ext, out var entries))
             {

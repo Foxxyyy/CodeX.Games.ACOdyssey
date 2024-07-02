@@ -1,26 +1,25 @@
 ﻿using CodeX.Core.Utilities;
 using CodeX.Games.ACOdyssey.FORGE;
 using System.Numerics;
-using System.Security.Cryptography;
 
 namespace CodeX.Games.ACOdyssey.Resources
 {
     public class ForgeWorld
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrGrid { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrGrid { get; set; }
         public int NumGridsDesc { get; set; }
-        public GridDescription[]? GridsDesc { get; set; }
+        public GridDescription[] GridsDesc { get; set; }
         public int NumEntities { get; set; }
-        public ForgeEntity[]? TerrainShadowProxies { get; set; }
-        public ForgeFileReference? FakeEntitiesManager { get; set; }
-        public ForgeFileReference? DefaultTransitionPortal { get; set; }
-        public ForgeFileReference? DynamicTransitionPortal { get; set; }
+        public ForgeEntity[] TerrainShadowProxies { get; set; }
+        public ForgeFileReference FakeEntitiesManager { get; set; }
+        public ForgeFileReference DefaultTransitionPortal { get; set; }
+        public ForgeFileReference DynamicTransitionPortal { get; set; }
         public int NumWorldPortals { get; set; }
-        public ForgeFileReference[]? WorldTransitionPortals { get; set; }
-        public ForgeFileReference? WorldDataLayerManager { get; set; }
-        public WorldGraphicData? WorldGraphicData { get; set; }
-        public WorldEngineData? WorldEngineData { get; set; }
-        public RegionLayoutManager? RegionLayoutManager { get; set; }
+        public ForgeFileReference[] WorldTransitionPortals { get; set; }
+        public ForgeFileReference WorldDataLayerManager { get; set; }
+        public WorldGraphicData WorldGraphicData { get; set; }
+        public WorldEngineData WorldEngineData { get; set; }
+        public RegionLayoutManager RegionLayoutManager { get; set; }
 
         public ForgeWorld()
         {
@@ -91,8 +90,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class GridDescription
     {
-        public ForgeBaseObject? BaseObjectGridDescription { get; set; }
-        public ForgeBaseObject? BaseObjectGridLayout { get; set; }
+        public ForgeBaseObject BaseObjectGridDescription { get; set; }
+        public ForgeBaseObject BaseObjectGridLayout { get; set; }
         public ushort DefaultLoadingDistance { get; set; }
         public int CellSize { get; set; }
         public int BottomLeftX { get; set; }
@@ -102,7 +101,7 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool IsSingleLevelGrid { get; set; }
         public bool IgnoreCustomLoadingRange { get; set; }
         public bool IgnoreRegionLayoutLoadingRange { get; set; }
-        public ForgeFileReference? Grid { get; set; }
+        public ForgeFileReference Grid { get; set; }
 
         public GridDescription()
         {
@@ -133,12 +132,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class WorldGraphicData
     {
-        public ForgeObject? ObjectWorldGraphicData { get; set; }
-        public LayeredSky? LayeredSky { get; set; }
-        public ForgeFileReference? WorldGI { get; set; }
-        public LocalCubeMapContainer? LocalCubeMapContainer { get; set; }
-        public ForgeFileReference? FakeEntitiesReservedTexture { get; set; }
-        public ForgeFileReference? RainBlockerContainerRef { get; set; }
+        public ForgeObject ObjectWorldGraphicData { get; set; }
+        public LayeredSky LayeredSky { get; set; }
+        public ForgeFileReference WorldGI { get; set; }
+        public LocalCubeMapContainer LocalCubeMapContainer { get; set; }
+        public ForgeFileReference FakeEntitiesReservedTexture { get; set; }
+        public ForgeFileReference RainBlockerContainerRef { get; set; }
         public bool ClearGBufferColors { get; set; }
         public bool EnableSunlight { get; set; }
         public bool EnableDynamicLights { get; set; }
@@ -154,34 +153,34 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool EnableShadowCascade4 { get; set; }
         public uint UnderwaterShadowCount { get; set; }
         public bool ShadowCenterOnCamera { get; set; }
-        public ForgeObjectPtr? WorldParticleSystems { get; set; }
+        public ForgeObjectPtr WorldParticleSystems { get; set; }
         public float Near { get; set; }
         public float Far { get; set; }
         public bool DeconstructionEnabled { get; set; }
-        public Mask? DeconstructionGroupMask { get; set; }
+        public Mask DeconstructionGroupMask { get; set; }
         public float DeconstructionStartDistance { get; set; }
         public float DeconstructionSize { get; set; }
         public Vector4 DeconstructionOrigin { get; set; }
         public float UINear { get; set; }
         public float UIFar { get; set; }
-        public ForgeFileReference? UILightingSetup { get; set; }
+        public ForgeFileReference UILightingSetup { get; set; }
         public float WorldMapFogMinHeight { get; set; }
         public float WorldMapFogMaxHeight { get; set; }
         public float WorldMapLODDistanceScale { get; set; }
         public float WorldMapTerrainNodeErrorLimit { get; set; }
-        public ForgeFileReference? WorldMapFogHeightTexture { get; set; }
+        public ForgeFileReference WorldMapFogHeightTexture { get; set; }
         public float ReflectionMaxDistance { get; set; }
-        public PhotoMode? PhotoMode { get; set; }
+        public PhotoMode PhotoMode { get; set; }
         public bool VisibilityQueries { get; set; }
         public float MinGlobalLightingScale { get; set; }
         public float MaxGlobalLightingScale { get; set; }
         public float MinGlobalLightingScaleEV { get; set; }
         public float MaxGlobalLightingScaleEV { get; set; }
-        public ForgeFileReference? GISegments { get; set; }
-        public ForgeFileReference? LUTSegments { get; set; }
-        public ForgeFileReference? LightGroupIntensitySegments { get; set; }
-        public CollectionSettings? CollectionSettings { get; set; }
-        public GraceForceSettings? GraceForceSettings { get; set; }
+        public ForgeFileReference GISegments { get; set; }
+        public ForgeFileReference LUTSegments { get; set; }
+        public ForgeFileReference LightGroupIntensitySegments { get; set; }
+        public CollectionSettings CollectionSettings { get; set; }
+        public GraceForceSettings GraceForceSettings { get; set; }
         public float TranslucentSaturation { get; set; }
         public float FarLightsEndDistanceScale { get; set; }
         public float FarLightsSourceEndDistanceScale { get; set; }
@@ -287,7 +286,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class WorldEngineData
     {
-        public ForgeBaseObject? BaseObjectWorldEngineData { get; set; }
+        public ForgeBaseObject BaseObjectWorldEngineData { get; set; }
         public byte MaxSoundDistance { get; set; }
         public float DeathHeight { get; set; }
 
@@ -307,12 +306,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class RegionLayoutManager
     {
-        public ForgeObject? ObjectRegionLayoutManager { get; set; }
+        public ForgeObject ObjectRegionLayoutManager { get; set; }
         public int NumRegions { get; set; }
-        public RegionLayout[]? Regions { get; set; }
+        public RegionLayout[] Regions { get; set; }
         public int NumComponents { get; set; }
-        public WorldComponent[]? Components { get; set; }
-        public WorldMapParameters? MapParameters { get; set; }
+        public WorldComponent[] Components { get; set; }
+        public WorldMapParameters MapParameters { get; set; }
         public bool PartialWorld { get; set; }
         public bool HasPartialInstallExtraDataSource { get; set; }
 
@@ -359,7 +358,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class RegionLayout
     {
-        public ForgeFileReference? Region { get; set; } //.RegionLayout
+        public ForgeFileReference Region { get; set; } //.RegionLayout
 
         public RegionLayout()
         {
@@ -374,17 +373,17 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class LayeredSky
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrLayeredSky { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrLayeredSky { get; set; }
         public byte DescriptorMask { get; set; }
         public bool Generated { get; set; }
         public bool HasHighOverdraw { get; set; }
         public float MaxCullingDistance { get; set; }
         public uint EstimatedMemoryUsage { get; set; }
         public uint CompiledStarCount { get; set; }
-        public ForgeFileReference? StarCatalogBuffer { get; set; }
-        public ForgeFileReference? StarShimmerBuffer { get; set; }
-        public ForgeFileReference? SkyModelLUT { get; set; }
-        public ForgeFileReference? CloudData { get; set; }
+        public ForgeFileReference StarCatalogBuffer { get; set; }
+        public ForgeFileReference StarShimmerBuffer { get; set; }
+        public ForgeFileReference SkyModelLUT { get; set; }
+        public ForgeFileReference CloudData { get; set; }
 
         public LayeredSky()
         {
@@ -418,12 +417,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class LocalCubeMapContainer
     {
-        public ForgeObject? ObjectLocalCubeMapContainer { get; set; }
-        public LocalCubeMapSettings? LocalCubeMapSettings { get; set; }
+        public ForgeObject ObjectLocalCubeMapContainer { get; set; }
+        public LocalCubeMapSettings LocalCubeMapSettings { get; set; }
         public int NumLocalCubeMapEntries { get; set; }
-        public CubeMapEntry[]? LocalCubeMapEntries { get; set; }
+        public CubeMapEntry[] LocalCubeMapEntries { get; set; }
         public int NumGlobalCubeMapEntries { get; set; }
-        public CubeMapEntry[]? GlobalCubeMapEntries { get; set; }
+        public CubeMapEntry[] GlobalCubeMapEntries { get; set; }
 
         public LocalCubeMapContainer()
         {
@@ -459,12 +458,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class LocalCubeMapSettings
     {
-        public ForgeBaseObject? BaseObjectLocalCubeMapSettings { get; set; }
+        public ForgeBaseObject BaseObjectLocalCubeMapSettings { get; set; }
         public bool EnableFog { get; set; }
         public bool EnableShadowsInFog { get; set; }
         public float BlendDuration { get; set; }
         public float GlobalCubeMapBlendDuration { get; set; }
-        public float[]? LightMapKeyFrames { get; set; }
+        public float[] LightMapKeyFrames { get; set; }
         public uint CubeMapSize { get; set; }
         public bool AddCloudInSkyCubeMap { get; set; }
         public float CloudCoverStartOffset { get; set; }
@@ -505,9 +504,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class CubeMapEntry
     {
-        public ForgeBaseObject? BaseObjectCubeMapEntry { get; set; }
-        public ForgeObjectPtr? CubeMap { get; set; } //Handle<LocalCubeMap>
-        public ForgeObjectPtr? Ambiance { get; set; } //Handle<LocalVisualAmbiance>
+        public ForgeBaseObject BaseObjectCubeMapEntry { get; set; }
+        public ForgeObjectPtr CubeMap { get; set; } //Handle<LocalCubeMap>
+        public ForgeObjectPtr Ambiance { get; set; } //Handle<LocalVisualAmbiance>
 
         public CubeMapEntry()
         {
@@ -528,7 +527,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class PhotoMode
     {
-        public ForgeBaseObject? BaseObjectPhotoMode { get; set; }
+        public ForgeBaseObject BaseObjectPhotoMode { get; set; }
 
         public PhotoMode()
         {
@@ -543,7 +542,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class CollectionSettings
     {
-        public ForgeObject? ObjectCollectionSettings { get; set; }
+        public ForgeObject ObjectCollectionSettings { get; set; }
         public float ClusterFadeVarianceFactor { get; set; }
         public float Unknown_4h { get; set; }
         public float Unknown_8h { get; set; }
@@ -595,7 +594,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class GraceForceSettings
     {
-        public ForgeObject? ObjectGraceForceSettings { get; set; }
+        public ForgeObject ObjectGraceForceSettings { get; set; }
         public bool Enabled { get; set; }
         public uint TextureSize { get; set; }
         public float Radius { get; set; }

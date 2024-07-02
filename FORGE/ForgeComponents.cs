@@ -11,19 +11,19 @@ namespace CodeX.Games.ACOdyssey.FORGE
         public ComponentType ComponentType { get; set; }
         public bool Active { get; set; }
         public bool OptimizedForHardwareInstancing { get; set; }
-        public ForgeBaseObject? BaseObjectComponentLOD { get; set; }
+        public ForgeBaseObject BaseObjectComponentLOD { get; set; }
         public byte ComponentLODBitField { get; set; }
-        public ForgeFileReference? GraphicObject { get; set; }
-        public LODSelectorInstance? InstanceData { get; set; }
+        public ForgeFileReference GraphicObject { get; set; }
+        public LODSelectorInstance InstanceData { get; set; }
         public bool HasUnshareContext { get; set; }
         public bool OptimizedPackedLOD { get; set; }
         public int DisplayOrder { get; set; }
         public bool AllowCameraDither { get; set; }
         public bool AllowShadowCast { get; set; }
-        public VisualAutoResizer? AutoResizer { get; set; }
-        public VisualShaderConstants? ShaderConstants { get; set; }
+        public VisualAutoResizer AutoResizer { get; set; }
+        public VisualShaderConstants ShaderConstants { get; set; }
         public int NumPermutations { get; set; }
-        public StaticPermutation[]? AllowedStaticPermutations { get; set; }
+        public StaticPermutation[] AllowedStaticPermutations { get; set; }
         public Vector4 BVScale { get; set; }
 
         public Component()
@@ -77,12 +77,12 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class GuidanceSystemComponent : Component
     {
-        public GuidanceSystemData? DefaultGuidanceData { get; set; }
-        public EdgeFilter? EdgeFilter { get; set; }
+        public GuidanceSystemData DefaultGuidanceData { get; set; }
+        public EdgeFilter EdgeFilter { get; set; }
         public bool Dynamic { get; set; }
         public bool IsClear { get; set; }
         public ushort FirstParallelIndex { get; set; }
-        public Partitioner? Partitioner { get; set; }
+        public Partitioner Partitioner { get; set; }
         public bool IsOmniDirectionalGuidance { get; set; }
 
         public GuidanceSystemComponent()
@@ -115,11 +115,11 @@ namespace CodeX.Games.ACOdyssey.FORGE
         public int Unknown1 { get; set; }
         public int CharacterInteractionMode { get; set; }
         public int VehicleInteractionMode { get; set; }
-        public ForgeBaseObjectPtr? PlatformingDecriptor { get; set; }
+        public ForgeBaseObjectPtr PlatformingDecriptor { get; set; }
         public int Resistance { get; set; }
-        public ForgeBaseObject? GPSurfaceNavType { get; set; }
-        public RigidBody? RigidBody { get; set; }
-        public ForgeFileReference? ImpactData { get; set; }
+        public ForgeBaseObject GPSurfaceNavType { get; set; }
+        public RigidBody RigidBody { get; set; }
+        public ForgeFileReference ImpactData { get; set; }
         public bool UseGravityWhenKeyFramed { get; set; }
         public bool HasPhysicsInitTransform { get; set; }
         public bool AutoUpdatePhyicsHierarchy { get; set; }
@@ -133,12 +133,12 @@ namespace CodeX.Games.ACOdyssey.FORGE
         public Vector4 LinearConstraint { get; set; }
         public Vector4 AngularConstraint { get; set; }
         public bool Unknown2 { get; set; }
-        public ForgeObjectPtr? GuidanceSystemPtr { get; set; }
+        public ForgeObjectPtr GuidanceSystemPtr { get; set; }
         public int NumShapeOverrideData { get; set; }
-        public ListShapeOverrideData[]? ListShapeOverrideData { get; set; }
-        public ForgeObjectPtr? ShadowRigidBody { get; set; }
+        public ListShapeOverrideData[] ListShapeOverrideData { get; set; }
+        public ForgeObjectPtr ShadowRigidBody { get; set; }
         public int NumSoundOcclusionLinks { get; set; }
-        public ForgeObjectPtr[]? SoundOcclusionLinks { get; set; }
+        public ForgeObjectPtr[] SoundOcclusionLinks { get; set; }
 
         public RigidBodyComponent()
         {
@@ -206,7 +206,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class AudioComponent : Component
     {
         public int NumSubEmitters { get; set; }
-        public SimpleSoundSubComponent[]? SubEmitters { get; set; }
+        public SimpleSoundSubComponent[] SubEmitters { get; set; }
         public int VoiceSubEmitterIndex { get; set; }
 
         public AudioComponent()
@@ -230,24 +230,24 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class FireComponent : Component
     {
-        public ForgeFileReference? Template { get; set; }
+        public ForgeFileReference Template { get; set; }
         public int NumParticles { get; set; }
-        public FireParticle[]? Particles { get; set; }
-        public ForgeFileReference? FireSettings { get; set; }
+        public FireParticle[] Particles { get; set; }
+        public ForgeFileReference FireSettings { get; set; }
         public float Unknown1 { get; set; }
-        public ForgeFileReference? GlobalFX { get; set; }
-        public ForgeFileReference? ParticleFX { get; set; }
-        public ForgeFileReference? FireDamage { get; set; }
-        public ForgeFileReference? FireEnergy { get; set; }
-        public ForgeFileReference? FireResistance { get; set; }
-        public ForgeFileReference? CustomizedFireSoundSet { get; set; }
-        public ForgeFileReference? FirePropertyZone { get; set; }
-        public ForgeFileReference? PropagationConditions { get; set; }
+        public ForgeFileReference GlobalFX { get; set; }
+        public ForgeFileReference ParticleFX { get; set; }
+        public ForgeFileReference FireDamage { get; set; }
+        public ForgeFileReference FireEnergy { get; set; }
+        public ForgeFileReference FireResistance { get; set; }
+        public ForgeFileReference CustomizedFireSoundSet { get; set; }
+        public ForgeFileReference FirePropertyZone { get; set; }
+        public ForgeFileReference PropagationConditions { get; set; }
         public bool IsPersistent { get; set; }
         public int NumComponentDescriptors { get; set; }
-        public uint[]? FireComponentDescriptors { get; set; }
+        public uint[] FireComponentDescriptors { get; set; }
         public int NumLightVisuals { get; set; }
-        public uint[]? LightVisuals { get; set; }
+        public uint[] LightVisuals { get; set; }
         public bool Unknown2 { get; set; }
 
         public FireComponent()
@@ -392,7 +392,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
         }
     }
 
-    public class UnknownWorldComponent : WorldComponent //We'll use this class for every unknown component until we stop finding NULL data
+    public class UnknownWorldComponent : WorldComponent //We'll use this class for every unknown component
     {
         public UnknownWorldComponent()
         {
@@ -406,8 +406,8 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class NavigationComponent : WorldComponent
     {
         public uint NavMeshGridLayoutCellizeOverride { get; set; }
-        public ForgeFileReference? FloorHeightData { get; set; }
-        public ForgeFileReference? PilotConfigData { get; set; }
+        public ForgeFileReference FloorHeightData { get; set; }
+        public ForgeFileReference PilotConfigData { get; set; }
 
         public NavigationComponent()
         {
@@ -440,9 +440,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
     {
         public bool AbstractGameplayAlternative { get; set; }
         public bool Active { get; set; }
-        public ForgeObjectPtr? DebugSpawningSpecification { get; set; }
+        public ForgeObjectPtr DebugSpawningSpecification { get; set; }
         public float PreviewRadius { get; set; }
-        public ForgeGameplayCoordinator? Coordinator { get; set; }
+        public ForgeGameplayCoordinator Coordinator { get; set; }
 
         public GameplayCoordinatorComponent(bool abstractGameplayAlternative)
         {
@@ -513,11 +513,11 @@ namespace CodeX.Games.ACOdyssey.FORGE
     {
         public float WindGustCompression { get; set; }
         public Vector4 PrevailingWind { get; set; }
-        public SoundRTPC? RTPCBeaufortLevel { get; set; }
-        public ForgeFileReference? WindData { get; set; }
+        public SoundRTPC RTPCBeaufortLevel { get; set; }
+        public ForgeFileReference WindData { get; set; }
         public float VisualTime { get; set; }
         public float FullCycleTime { get; set; }
-        public TimeOfDayTransition[]? TimeOfDayTransitions { get; set; }
+        public TimeOfDayTransition[] TimeOfDayTransitions { get; set; }
         public float DefaultStartTime { get; set; }
         public bool EnableLockTimeOfDay { get; set; }
         public float YawLockVelocity { get; set; }
@@ -526,9 +526,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
         public float TranslationLockVelocity { get; set; }
         public float TimelapseUnlockDelay { get; set; }
         public float CameraUnlockDelay { get; set; }
-        public ForgeFileReference? DefaultGlobalVisualAmbiance { get; set; }
-        public ForgeFileReference? WeatherVisualAmbianceModifier { get; set; }
-        public FCurveFloat? WeatherModifierInfluence { get; set; }
+        public ForgeFileReference DefaultGlobalVisualAmbiance { get; set; }
+        public ForgeFileReference WeatherVisualAmbianceModifier { get; set; }
+        public FCurveFloat WeatherModifierInfluence { get; set; }
         public float BlendDuration { get; set; }
 
         public VisualAmbianceComponent()
@@ -580,8 +580,8 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class GameAIWorldComponent : WorldComponent
     {
-        public AmbientEventManager? AmbientEventManager { get; set; }
-        public ZoneSpawnerManager? ZoneSpawnerManager { get; set; }
+        public AmbientEventManager AmbientEventManager { get; set; }
+        public ZoneSpawnerManager ZoneSpawnerManager { get; set; }
 
         public GameAIWorldComponent()
         {
@@ -632,9 +632,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class PermanentIconManagerComponent : WorldComponent
     {
         public int NumIcons { get; set; }
-        public PermanentIconData[]? Icons { get; set; }
+        public PermanentIconData[] Icons { get; set; }
         public int NumUILocations { get; set; }
-        public UILocationBase[]? UILocations { get; set; }
+        public UILocationBase[] UILocations { get; set; }
 
         public PermanentIconManagerComponent()
         {
@@ -664,9 +664,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SpaceWorldComponent : WorldComponent
     {
-        public SpaceSection? GlobalSection { get; set; }
-        public SpaceSection? GlobalSectionHandle { get; set; }
-        public SoundOcclusionPortalExteriorLinksTable? SoundOcclusionPortalExteriorLinksTable { get; set; }
+        public SpaceSection GlobalSection { get; set; }
+        public SpaceSection GlobalSectionHandle { get; set; }
+        public SoundOcclusionPortalExteriorLinksTable SoundOcclusionPortalExteriorLinksTable { get; set; }
 
         public SpaceWorldComponent()
         {
@@ -704,7 +704,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class WorldBookmarkComponent : WorldComponent
     {
         public int NumTeleportBookmarks { get; set; }
-        public TeleportBookmark[]? TeleportBookmarks { get; set; }
+        public TeleportBookmark[] TeleportBookmarks { get; set; }
 
         public WorldBookmarkComponent()
         {
@@ -725,7 +725,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class AIGameNetworkInterfaceComponent : WorldComponent
     {
-        public ForgeFileReference? WorldPathManager { get; set; }
+        public ForgeFileReference WorldPathManager { get; set; }
 
         public AIGameNetworkInterfaceComponent()
         {
@@ -741,10 +741,10 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class MetaAIComponent : WorldComponent
     {
         public int NumExceptions { get; set; }
-        public MetaAIObjective[]? DebugNotInstanceObjectiveExceptions { get; set; }
-        public MetaAISystemicEventTrackingManager? SystemicEventTracking { get; set; }
-        public ForgeObjectPtr? Unknown1 { get; set; }
-        public ForgeFileReference? MetaAIComponentSettings { get; set; }
+        public MetaAIObjective[] DebugNotInstanceObjectiveExceptions { get; set; }
+        public MetaAISystemicEventTrackingManager SystemicEventTracking { get; set; }
+        public ForgeObjectPtr Unknown1 { get; set; }
+        public ForgeFileReference MetaAIComponentSettings { get; set; }
         public bool DebugActivatePreRoll { get; set; }
         public bool EnableMetaAI { get; set; }
         public bool EnableSchedule { get; set; }
@@ -798,7 +798,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class PersonalRideableManagerComponent : WorldComponent
     {
         public int NumHandlers { get; private set; }
-        public ForgeFileReference[]? RideableHandlers { get; private set; }
+        public ForgeFileReference[] RideableHandlers { get; private set; }
 
         public PersonalRideableManagerComponent()
         {
@@ -819,7 +819,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SoundRfxManagerComponent : WorldComponent
     {
-        public ForgeFileReference? SoundRfxData { get; private set; }
+        public ForgeFileReference SoundRfxData { get; private set; }
         public float PositionEspilon { get; private set; }
 
         public SoundRfxManagerComponent()
@@ -837,7 +837,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class PlayerRestrictionManagerComponent : WorldComponent
     {
-        public ForgeFileReference? SoundRfxData { get; private set; }
+        public ForgeFileReference SoundRfxData { get; private set; }
         public float PositionEspilon { get; private set; }
 
         public PlayerRestrictionManagerComponent()
@@ -853,8 +853,8 @@ namespace CodeX.Games.ACOdyssey.FORGE
     {
         public float FogThresholdForLOS { get; set; }
         public float SetPlayerVisibilityRatio { get; set; }
-        public ForgeFileReference? Unknown_8h { get; set; }
-        public ForgeFileReference? Unknown_Ch { get; set; }
+        public ForgeFileReference Unknown_8h { get; set; }
+        public ForgeFileReference Unknown_Ch { get; set; }
         public uint DensityAdressMapAdressMode { get; set; }
         public float DensityMapStartX { get; set; }
         public float DensityMapStartY { get; set; }
@@ -913,7 +913,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SoundBankComponent : WorldComponent
     {
-        public ForgeFileReference? SoundBanksRef { get; set; }
+        public ForgeFileReference SoundBanksRef { get; set; }
 
         public SoundBankComponent()
         {
@@ -928,7 +928,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SoundRiverManagerComponent : WorldComponent
     {
-        public ForgeFileReference? SoundSet { get; set; }
+        public ForgeFileReference SoundSet { get; set; }
         public float MaxSearchDistance { get; set; }
 
         public SoundRiverManagerComponent()
@@ -947,7 +947,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class InteriorManagerComponent : WorldComponent
     {
         public int NumInteriorSettings { get; set; }
-        public InteriorSettings[]? InteriorSettings { get; set; }
+        public InteriorSettings[] InteriorSettings { get; set; }
 
         public InteriorManagerComponent()
         {
@@ -969,43 +969,43 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class DebugSettingsComponent : WorldComponent
     {
         public int NumDebugNPCInfo { get; set; }
-        public SpawnNPCInfo[]? DebugSpawnNPCInfo { get; set; }
+        public SpawnNPCInfo[] DebugSpawnNPCInfo { get; set; }
 
         public int NumDebugAnimalInfo { get; set; }
-        public SpawnNPCInfo[]? DebugSpawnAnimalInfo { get; set; }
+        public SpawnNPCInfo[] DebugSpawnAnimalInfo { get; set; }
 
         public int NumDebugRideableAnimalInfo { get; set; }
-        public DebugRideableAnimalInfo[]? DebugRideableAnimalInfo { get; set; }
+        public DebugRideableAnimalInfo[] DebugRideableAnimalInfo { get; set; }
 
         public int NumDebugSpawnObjectInfo { get; set; }
-        public SpawnObjectInfo[]? DebugSpawnObjectInfo { get; set; }
+        public SpawnObjectInfo[] DebugSpawnObjectInfo { get; set; }
 
         public int NumDebugSpawnChariotInfo { get; set; }
-        public SpawnChariotInfo[]? DebugSpawnChariotInfo { get; set; }
+        public SpawnChariotInfo[] DebugSpawnChariotInfo { get; set; }
 
         public int NumDebugSpawnWaterVehicleInfo { get; set; }
-        public SpawnWaterVehicleInfo[]? DebugSpawnWaterVehicleInfo { get; set; }
+        public SpawnWaterVehicleInfo[] DebugSpawnWaterVehicleInfo { get; set; }
 
         public int NumDebugSpawnNPCInfoGroup { get; set; }
-        public SpawnNPCInfoGroup[]? DebugSpawnNPCInfoGroup { get; set; }
+        public SpawnNPCInfoGroup[] DebugSpawnNPCInfoGroup { get; set; }
         public byte Unknown1 { get; set; }
-        public ForgeFileReference? DebugSpawnNPCFleeReaction { get; set; }
-        public ForgeFileReference? DebugSpawnFollowObjectiveSchedule { get; set; }
-        public ForgeFileReference? Unknown2 { get; set; }
+        public ForgeFileReference DebugSpawnNPCFleeReaction { get; set; }
+        public ForgeFileReference DebugSpawnFollowObjectiveSchedule { get; set; }
+        public ForgeFileReference Unknown2 { get; set; }
 
         public int NumDebugSpawnStationNPCContextBehaviours { get; set; }
-        public ForgeFileReference[]? DebugSpawnStationNPCContextBehaviours { get; set; }
+        public ForgeFileReference[] DebugSpawnStationNPCContextBehaviours { get; set; }
 
         public int NumDebugSpawnMetaAIAnimalBehaviours { get; set; }
-        public ForgeFileReference[]? DebugSpawnMetaAIAnimalBehaviours { get; set; }
+        public ForgeFileReference[] DebugSpawnMetaAIAnimalBehaviours { get; set; }
 
         public int NumDebugFightAvailableVehicles { get; set; }
-        public ForgeFileReference[]? DebugFightAvailableVehicles { get; set; }
-        public BuildTag? DebugTag { get; set; }
-        public FactionSelector? HostileFaction { get; set; }
-        public ForgeObjectPtr? UniqueNPCWorldFilter { get; set; }
-        public ForgeFileReference? Unknown3 { get; set; }
-        public BuildTags? DebugTag2 { get; set; }
+        public ForgeFileReference[] DebugFightAvailableVehicles { get; set; }
+        public BuildTag DebugTag { get; set; }
+        public FactionSelector HostileFaction { get; set; }
+        public ForgeObjectPtr UniqueNPCWorldFilter { get; set; }
+        public ForgeFileReference Unknown3 { get; set; }
+        public BuildTags DebugTag2 { get; set; }
         public bool Unknown4 { get; set; }
         public bool PauseSplineMovers { get; set; }
         public float SplineMoversTimeStep { get; set; }
@@ -1148,7 +1148,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class UIWorldComponent : WorldComponent
     {
         public int NumModes { get; set; }
-        public uint[]? WorldAdditionHUDModes { get; set; }
+        public uint[] WorldAdditionHUDModes { get; set; }
 
         public UIWorldComponent()
         {
@@ -1275,11 +1275,11 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class ACSoundAmbienceManagerComponent : WorldComponent
     {
         public int NumGlobalAmbiences { get; set; }
-        public SoundInstance[]? GlobalAmbiences { get; set; }
+        public SoundInstance[] GlobalAmbiences { get; set; }
         public int NumAmbienceSoundStatesIndexes { get; set; }
-        public byte[]? AmbienceSoundStatesInWorldIndexes { get; set; }
+        public byte[] AmbienceSoundStatesInWorldIndexes { get; set; }
         public int NumAmbienceSoundStates { get; set; }
-        public SoundState[]? AmbienceSoundStatesInWorld { get; set; }
+        public SoundState[] AmbienceSoundStatesInWorld { get; set; }
         public int AmbienceWidth { get; set; }
         public int AmbienceHeight { get; set; }
         public Vector2 OriginOffset { get; set; }
@@ -1326,7 +1326,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class DesyncManagerComponent : WorldComponent
     {
-        public DesynchronizationSettings? DesynchronizationSettings { get; set; }
+        public DesynchronizationSettings DesynchronizationSettings { get; set; }
 
         public DesyncManagerComponent()
         {
@@ -1341,7 +1341,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class CrewAssistanceManagerComponent : WorldComponent
     {
-        public SpecialAbilityDataAbstract? SpecialAbilityData { get; set; }
+        public SpecialAbilityDataAbstract SpecialAbilityData { get; set; }
 
         public CrewAssistanceManagerComponent()
         {
@@ -1357,7 +1357,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     public class WorldTagRulesComponent : WorldComponent
     {
         public int NumRules { get; set; }
-        public TagRules[]? Rules { get; set; }
+        public TagRules[] Rules { get; set; }
 
         public WorldTagRulesComponent()
         {

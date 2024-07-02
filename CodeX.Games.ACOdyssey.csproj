@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeX-022\CodeX.Core\CodeX.Core.csproj" />
+    <ProjectReference Include="..\..\CodeX-025\CodeX-main\CodeX.Core\CodeX.Core.csproj" />
   </ItemGroup>
 
 </Project>

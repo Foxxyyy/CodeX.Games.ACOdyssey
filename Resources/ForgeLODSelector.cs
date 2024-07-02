@@ -6,14 +6,14 @@ namespace CodeX.Games.ACOdyssey.Resources
 {
     public class ForgeLODSelector
     {
-        public ForgeDataHeader? Header { get; set; }
-        public ForgeBaseObjectPtr? BaseObjectPtrLODSelector { get; set; }
+        public ForgeDataHeader Header { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrLODSelector { get; set; }
         public byte DescriptorMask { get; set; }
         public bool Generated { get; set; }
         public bool HasHighOverdraw { get; set; }
         public float MaxCullingDistance { get; set; }
         public uint EstimatedMemoryUsage { get; set; }
-        public LODDescriptor[]? LODDescs { get; set; }
+        public LODDescriptor[] LODDescs { get; set; }
         public bool TransitionToEmptyLOD { get; set; }
         public bool UseNearNullObjects { get; set; }
         public bool ForceNoBlend { get; set; }
@@ -75,8 +75,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class LODDescriptor
     {
-        public ForgeBaseObject? BaseObjectLODDescriptor { get; set; }
-        public ForgeFileReference? Object { get; set; }
+        public ForgeBaseObject BaseObjectLODDescriptor { get; set; }
+        public ForgeFileReference Object { get; set; }
         public float SwitchDistance { get; set; }
         public float TransitionZoneSide { get; set; }
         public float FadeTimeMultiplier { get; set; }
@@ -84,11 +84,11 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool Optional { get; set; }
         public bool ForceIncludeInFake { get; set; }
         public int ShaderLOD { get; set; }
-        public ForgeObjectPtr? StreamObjectHandle { get; set; }
+        public ForgeObjectPtr StreamObjectHandle { get; set; }
         public int NumMaterials { get; set; }
-        public ForgeFileReference[]? StreamObjectMaterials { get; set; }
+        public ForgeFileReference[] StreamObjectMaterials { get; set; }
         public int NumBones { get; set; }
-        public uint[]? BoneIDs { get; set; }
+        public uint[] BoneIDs { get; set; }
 
         public LODDescriptor()
         {

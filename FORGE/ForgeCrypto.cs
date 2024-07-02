@@ -10,7 +10,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 {
     public class ForgeCrypto
     {
-        public static byte[]? DecompressData(byte[] rawData)
+        public static byte[] DecompressData(byte[] rawData)
         {
             using var stream = new MemoryStream(rawData);
             using var reader = new BinaryReader(stream);

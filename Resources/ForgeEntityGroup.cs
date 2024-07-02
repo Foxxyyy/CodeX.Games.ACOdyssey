@@ -8,9 +8,9 @@ namespace CodeX.Games.ACOdyssey.Resources
     public class ForgeEntityGroup : ForgeEntity
     {
         public int NumEntity { get; set; }
-        public ForgeEntity[]? Entities { get; set; }
+        public ForgeEntity[] Entities { get; set; }
         public int NumUIEntities { get; set; }
-        public ForgeObjectPtr[]? UIEntitiesDisplayOrder { get; set; }
+        public ForgeObjectPtr[] UIEntitiesDisplayOrder { get; set; }
 
         public ForgeEntityGroup()
         {
@@ -49,12 +49,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ForgeEntity
     {
-        public ForgeFileReference? ReferenceEntity { get; set; }
-        public ForgeBaseObjectPtr? Hierarchy { get; set; }
+        public ForgeFileReference ReferenceEntity { get; set; }
+        public ForgeBaseObjectPtr Hierarchy { get; set; }
         public byte CheckByte { get; set; } //3
         public Matrix4x4? GlobalMatrix { get; set; }
         public int ComponentCount { get; set; }
-        public Component[]? Components { get; set; }
+        public Component[] Components { get; set; }
         public bool SkipGroupMatrixUpdate { get; set; }
         public bool IsGraphicsUnitTestCameraReferencePosition { get; set; }
         public bool IsPhantom { get; set; }
@@ -84,23 +84,23 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool WetnessDisabled { get; set; }
         public float WetnessBias { get; set; }
         public int LightMask { get; set; }
-        public Mask? DeconstructionGroupMask { get; set; }
+        public Mask DeconstructionGroupMask { get; set; }
         public bool OptimizeForHardwareInstancing { get; set; }
         public bool FakeCellIndexValid { get; set; }
         public int FakeCellIndex { get; set; }
         public int GridTypeForFakeMasking { get; set; }
         public float Scale { get; set; }
-        public ForgeBaseObject? BaseObjectBV { get; set; }
-        public Vector3? BoundingVolumeMin { get; set; }
-        public Vector3? BoundingVolumeMax { get; set; }
-        public BoundingVolumeType? BoundingVolumeType { get; set; }
-        public EntityDescriptor? EntityDescriptor { get; set; }
-        public DataLayerFilter? DataLayerFilter { get; set; }
+        public ForgeBaseObject BaseObjectBV { get; set; }
+        public Vector3 BoundingVolumeMin { get; set; }
+        public Vector3 BoundingVolumeMax { get; set; }
+        public BoundingVolumeType BoundingVolumeType { get; set; }
+        public EntityDescriptor EntityDescriptor { get; set; }
+        public DataLayerFilter DataLayerFilter { get; set; }
         public int NumUIVisuals { get; set; }
-        public Visual[]? UIVisualsDisplayOrder { get; set; }
-        public byte[]? PerViewDirCullingDistances { get; set; }
-        public GameStateData? ResetData { get; set; }
-        public StreamableTexture[]? StreamableTextures { get; set; }
+        public Visual[] UIVisualsDisplayOrder { get; set; }
+        public byte[] PerViewDirCullingDistances { get; set; }
+        public GameStateData ResetData { get; set; }
+        public StreamableTexture[] StreamableTextures { get; set; }
         public int EffectiveGridType { get; set; }
         public ushort MinLodIndex { get; set; }
         public ushort MaxLodIndex { get; set; }
@@ -246,8 +246,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class FireParticle
     {
-        public ForgeBaseObjectPtr? ObjectPtrFireParticle { get; set; }
-        public ForgeFileReference? CustomFX { get; set; }
+        public ForgeBaseObjectPtr ObjectPtrFireParticle { get; set; }
+        public ForgeFileReference CustomFX { get; set; }
         public Vector4 FXPositionOffset { get; set; }
         public float FXRadiusModifier { get; set; }
         public int ParticleShape { get; set; }
@@ -256,7 +256,7 @@ namespace CodeX.Games.ACOdyssey.Resources
         public Vector4 HalfExtentsInternal { get; set; }
         public Vector3 LocalPosition { get; set; }
         public Vector4 LocalRotation { get; set; }
-        public ForgeObjectPtr? Tag { get; set; }
+        public ForgeObjectPtr Tag { get; set; }
         public bool SelfPropagationOnly { get; set; }
         public bool UseEntityPositionForWaterLevel { get; set; }
 
@@ -291,8 +291,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SimpleSoundSubComponent
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrSubEmitters { get; set; }
-        public SoundEmitter? SoundEmitter { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrSubEmitters { get; set; }
+        public SoundEmitter SoundEmitter { get; set; }
         public Vector4 PersistentLocalPosition { get; set; }
         public int SoundEmitterTag1 { get; set; }
         public int SoundEmitterTag2 { get; set; }
@@ -319,7 +319,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SoundEmitter
     {
-        public ForgeBaseObject? BaseObjectSoundEmitter { get; set; }
+        public ForgeBaseObject BaseObjectSoundEmitter { get; set; }
         public bool ForceCenterSpeaker { get; set; }
         public bool IsEnvironmental { get; set; }
         public bool EnableControllerRumble { get; set; }
@@ -328,9 +328,9 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool CheckOwnerRotation { get; set; }
         public bool CheckOwnerRotationTEMP { get; set; }
         public bool DisableMicrophoneConeAttenuation { get; set; }
-        public ForgeFileReference? OcclusionAdditionalConeAttenuation { get; set; }
+        public ForgeFileReference OcclusionAdditionalConeAttenuation { get; set; }
         public float OrientationAngleRadian { get; set; }
-        public ForgeBaseObject? BaseObjectSwitchDependencies { get; set; }
+        public ForgeBaseObject BaseObjectSwitchDependencies { get; set; }
         public int SwitchPresetIndex { get; set; }
         public int NumSwitchValues { get; set; }
         public int NumRTPC { get; set; }
@@ -373,8 +373,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SoundRTPC
     {
-        public ForgeBaseObject? BaseObjectSoundRTPC { get; set; }
-        public SoundID? ID { get; set; }
+        public ForgeBaseObject BaseObjectSoundRTPC { get; set; }
+        public SoundID ID { get; set; }
         public float InitValue { get; set; }
         public float Precision { get; set; }
 
@@ -397,7 +397,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SoundID
     {
-        public ForgeBaseObject? BaseObjectSoundID { get; set; }
+        public ForgeBaseObject BaseObjectSoundID { get; set; }
         public uint ShortID { get; set; }
 
         public SoundID()
@@ -415,8 +415,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class TimeOfDayTransition
     {
-        public ForgeBaseObject? BaseObjectTimeOfDayTransition { get; set; }
-        public ForgeObjectPtr? AssociatedLayer { get; set; }
+        public ForgeBaseObject BaseObjectTimeOfDayTransition { get; set; }
+        public ForgeObjectPtr AssociatedLayer { get; set; }
 
         public TimeOfDayTransition()
         {
@@ -434,7 +434,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class EntityDescriptor
     {
-        public ForgeBaseObject? BaseObjectEntityDescriptor { get; set; }
+        public ForgeBaseObject BaseObjectEntityDescriptor { get; set; }
         public int DescriptorType { get; set; }
         public uint SubDescriptorType { get; set; }
         public uint ExplicitProperty { get; set; }
@@ -465,8 +465,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class DataLayerFilter
     {
-        public ForgeBaseObject? BaseObjectDataLayerFilter { get; set; }
-        public DataLayerAction[]? LayerActions { get; set; }
+        public ForgeBaseObject BaseObjectDataLayerFilter { get; set; }
+        public DataLayerAction[] LayerActions { get; set; }
 
         public DataLayerFilter()
         {
@@ -500,12 +500,12 @@ namespace CodeX.Games.ACOdyssey.Resources
     public class GameStateData
     {
         public int Unknown1 { get; set; }
-        public ForgeObject? ObjectGameStateData { get; set; }
+        public ForgeObject ObjectGameStateData { get; set; }
         public int PropertyCount { get; set; }
         public int NumDescBuffer { get; set; }
-        public byte[]? DescBuffer { get; set; }
+        public byte[] DescBuffer { get; set; }
         public int NumDataBuffer { get; set; }
-        public byte[]? DataBuffer { get; set; }
+        public byte[] DataBuffer { get; set; }
 
         public GameStateData()
         {
@@ -530,10 +530,10 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class StreamableTexture
     {
-        public ForgeBaseObject? BaseObjectStreamableTexture { get; set; }
+        public ForgeBaseObject BaseObjectStreamableTexture { get; set; }
         public int Unknown1 { get; set; }
         public int NumTextures { get; private set; }
-        public ForgeObjectPtr[]? Textures { get; private set; }
+        public ForgeObjectPtr[] Textures { get; private set; }
 
         public StreamableTexture()
         {
@@ -568,9 +568,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ListShapeOverrideData
     {
-        public ForgeBaseObject? BaseObjectShapeData { get; set; }
+        public ForgeBaseObject BaseObjectShapeData { get; set; }
         public bool IsGround { get; set; }
-        public CollisionFilterInfo? FilterInfo { get; set; }
+        public CollisionFilterInfo FilterInfo { get; set; }
 
         public ListShapeOverrideData()
         {
@@ -590,12 +590,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class RigidBody
     {
-        public ForgeBaseObject? BaseObjectRigid { get; set; }
-        public CollisionFilterInfo? FilterInfo { get; set; }
-        public ForgeFileReference? Material { get; set; }
+        public ForgeBaseObject BaseObjectRigid { get; set; }
+        public CollisionFilterInfo FilterInfo { get; set; }
+        public ForgeFileReference Material { get; set; }
         public int Quality { get; set; }
-        public ForgeFileReference? Shape { get; set; }
-        public ForgeFileReference? OwnedShape { get; set; }
+        public ForgeFileReference Shape { get; set; }
+        public ForgeFileReference OwnedShape { get; set; }
         public float Mass { get; set; }
         public float LinearDamping { get; set; }
         public float AngularDamping { get; set; }
@@ -645,7 +645,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class CollisionFilterInfo
     {
-        public ForgeBaseObject? BaseObjectFilterInfo { get; set; }
+        public ForgeBaseObject BaseObjectFilterInfo { get; set; }
         public int Layer { get; set; }
         public int Part { get; set; }
         public bool NoCameraCollision { get; set; }
@@ -684,9 +684,9 @@ namespace CodeX.Games.ACOdyssey.Resources
     public class GuidanceSystemData
     {
         public int NumGuidanceObjects { get; set; }
-        public GuidanceObject[]? GuidanceObjects { get; set; }
+        public GuidanceObject[] GuidanceObjects { get; set; }
         public int NumPoints { get; set; }
-        public Vector3[]? Points { get; set; }
+        public Vector3[] Points { get; set; }
 
         public GuidanceSystemData()
         {
@@ -755,11 +755,11 @@ namespace CodeX.Games.ACOdyssey.Resources
     {
         public ushort RootIndex { get; set; }
         public uint NumLeafs { get; set; }
-        public ushort[]? LeafsIndex { get; set; }
+        public ushort[] LeafsIndex { get; set; }
         public Vector3 Min { get; set; }
         public Vector3 Max { get; set; }
         public uint NumNodes { get; set; }
-        public PartNode[]? ListNodes { get; set; }
+        public PartNode[] ListNodes { get; set; }
 
         public Partitioner()
         {
@@ -792,7 +792,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class PartNode
     {
-        public ForgeBaseObject? BaseObjectPartNode { get; set; }
+        public ForgeBaseObject BaseObjectPartNode { get; set; }
         public int NodeType { get; set; }
         public ushort Index0 { get; set; }
         public ushort Index1 { get; set; }
@@ -816,11 +816,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class GuidanceObject
     {
-        public ForgeBaseObject? BaseObjectGuidanceObject { get; set; }
+        public ForgeBaseObject BaseObjectGuidanceObject { get; set; }
         public bool Valid { get; set; }
         public int Index0 { get; set; }
         public int Index1 { get; set; }
-        public GuidanceObjectTypingInfo? TypingInfo { get; set; }
+        public GuidanceObjectTypingInfo TypingInfo { get; set; }
         public uint Dec4NNormal_0 { get; set; }
         public uint Dec4NNormal_1 { get; set; }
 
@@ -847,7 +847,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class GuidanceObjectTypingInfo
     {
-        public ForgeBaseObject? BaseObjectTypingInfo { get; set; }
+        public ForgeBaseObject BaseObjectTypingInfo { get; set; }
         public int SubType { get; set; }
         public bool IsPassOver { get; set; }
         public bool IsNoHand { get; set; }
@@ -878,13 +878,13 @@ namespace CodeX.Games.ACOdyssey.Resources
     public class LODSelectorInstance
     {
         public int InstanceMatricesCount { get; set; }
-        public Matrix4x4[]? InstanceMatrices { get; set; }
-        public VisualShaderConstantsContainer? InstanceShaderConstants { get; set; }
-        public VisualStaticPermutationsContainer? InstanceStaticPermutations { get; set; }
-        public BoundingVolume? InstanceOriginalBV { get; set; }
-        public InstanceLODConsts? InstanceLODConsts { get; set; }
-        public LODSelectorRef? LODSelector { get; set; }
-        public GraphicObjectInstanceData[]? LODInstanceData { get; set; }
+        public Matrix4x4[] InstanceMatrices { get; set; }
+        public VisualShaderConstantsContainer InstanceShaderConstants { get; set; }
+        public VisualStaticPermutationsContainer InstanceStaticPermutations { get; set; }
+        public BoundingVolume InstanceOriginalBV { get; set; }
+        public InstanceLODConsts InstanceLODConsts { get; set; }
+        public LODSelectorRef LODSelector { get; set; }
+        public GraphicObjectInstanceData[] LODInstanceData { get; set; }
 
         public LODSelectorInstance()
         {
@@ -928,7 +928,7 @@ namespace CodeX.Games.ACOdyssey.Resources
     {
         public byte CheckByte { get; set; }
         public int NumShaderConstants { get; set; }
-        public VisualShaderConstants[]? UniqueShaderConstants { get; set; }
+        public VisualShaderConstants[] UniqueShaderConstants { get; set; }
         public int NumConstants { get; set; }
         public int[] ShaderConstantIndirections { get; set; }
 
@@ -973,15 +973,15 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class VisualShaderConstants
     {
-        public ForgeBaseObject? BaseObjectDataLayout { get; set; }
+        public ForgeBaseObject BaseObjectDataLayout { get; set; }
         public uint DataLayout { get; set; }
-        public ForgeBaseObject? DefaultLayout { get; set; }
-        public ForgeBaseObject? CollectionLayout { get; set; }
-        public ForgeBaseObject? UILayout { get; set; }
-        public ForgeBaseObject? CharacterLayout { get; set; }
-        public ForgeBaseObject? SkinLayout { get; set; }
-        public ForgeBaseObject? ClothLayout { get; set; }
-        public ForgeBaseObject? MetalLayout { get; set; }
+        public ForgeBaseObject DefaultLayout { get; set; }
+        public ForgeBaseObject CollectionLayout { get; set; }
+        public ForgeBaseObject UILayout { get; set; }
+        public ForgeBaseObject CharacterLayout { get; set; }
+        public ForgeBaseObject SkinLayout { get; set; }
+        public ForgeBaseObject ClothLayout { get; set; }
+        public ForgeBaseObject MetalLayout { get; set; }
         public byte[] Data { get; set; }
 
         public VisualShaderConstants()
@@ -1022,12 +1022,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class VisualStaticPermutationsContainer
     {
-        public ForgeObject? ObjectPermutations { get; set; }
+        public ForgeObject ObjectPermutations { get; set; }
         public int NumPermutations { get; set; }
-        public VisualStaticPermutationsArray[]? UniqueVisualPermutations { get; set; }
+        public VisualStaticPermutationsArray[] UniqueVisualPermutations { get; set; }
         public uint UniqueVisualPermutationsHash { get; set; }
         public int NumInstances { get; set; }
-        public ushort[]? Instances { get; set; }
+        public ushort[] Instances { get; set; }
 
         public VisualStaticPermutationsContainer()
         {
@@ -1066,9 +1066,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class VisualStaticPermutationsArray
     {
-        public ForgeBaseObject? BaseObjectVisualStaticPermutationsArray { get; set; }
+        public ForgeBaseObject BaseObjectVisualStaticPermutationsArray { get; set; }
         public int NumStaticPermutations { get; set; }
-        public ForgeFileReference[]? StaticPermutations { get; set; }
+        public ForgeFileReference[] StaticPermutations { get; set; }
 
         public VisualStaticPermutationsArray()
         {
@@ -1092,7 +1092,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class InstanceLODConsts
     {
-        public ForgeBaseObject? BaseObjectInstanceLOD { get; set; }
+        public ForgeBaseObject BaseObjectInstanceLOD { get; set; }
         public float DistanceScale { get; set; }
         public float SwitchInDistance { get; set; }
         public float SwitchOutDistance { get; set; }
@@ -1119,7 +1119,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class LODSelectorRef
     {
-        public ForgeObjectPtr? Selector { get; set; }
+        public ForgeObjectPtr Selector { get; set; }
 
         public LODSelectorRef()
         {
@@ -1134,14 +1134,14 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class GraphicObjectInstanceData
     {
-        public VisualShaderConstantsContainer? InstanceShaderConstants { get; set; }
-        public VisualStaticPermutationsContainer? InstanceStaticPermutations { get; set; }
-        public BoundingVolume? InstanceOriginalBV { get; set; }
-        public InstanceLODConsts? InstanceLODConsts { get; set; }
-        public ForgeFileReference? Mesh { get; set; }
-        public CompiledMeshInstance? CompiledMeshInstance { get; set; }
+        public VisualShaderConstantsContainer InstanceShaderConstants { get; set; }
+        public VisualStaticPermutationsContainer InstanceStaticPermutations { get; set; }
+        public BoundingVolume InstanceOriginalBV { get; set; }
+        public InstanceLODConsts InstanceLODConsts { get; set; }
+        public ForgeFileReference Mesh { get; set; }
+        public CompiledMeshInstance CompiledMeshInstance { get; set; }
         public int NumMaterialInfos { get; set; }
-        public MeshInstanceMaterialInfo[]? MaterialInfos { get; set; }
+        public MeshInstanceMaterialInfo[] MaterialInfos { get; set; }
 
         public GraphicObjectInstanceData()
         {
@@ -1186,7 +1186,7 @@ namespace CodeX.Games.ACOdyssey.Resources
     {
         public byte VertexFormat { get; set; }
         public int NumStreams { get; set; }
-        public CompiledMeshInstanceStream[]? Streams { get; set; }
+        public CompiledMeshInstanceStream[] Streams { get; set; }
         public int PlatformVersion { get; set; }
         public int SDKVersion { get; set; }
         public ulong MeshHash { get; set; }
@@ -1228,9 +1228,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class MeshInstanceMaterialInfo
     {
-        public ForgeObjectPtr? GraphicObjectInstance { get; set; }
-        public ForgeObjectPtr? MeshMaterial { get; set; }
-        public ForgeFileReference? InstanceMaterial { get; set; }
+        public ForgeObjectPtr GraphicObjectInstance { get; set; }
+        public ForgeObjectPtr MeshMaterial { get; set; }
+        public ForgeFileReference InstanceMaterial { get; set; }
 
         public MeshInstanceMaterialInfo()
         {
@@ -1283,9 +1283,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class FCurveFloat
     {
-        public ForgeObject? ObjectPtrFCurveFloat { get; set; }
+        public ForgeObject ObjectPtrFCurveFloat { get; set; }
         public int NumFCurves { get; set; }
-        public FCurve[]? FCurves { get; set; }
+        public FCurve[] FCurves { get; set; }
         public float PlaybackMode { get; set; }
 
         public FCurveFloat()
@@ -1312,9 +1312,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class FCurve
     {
-        public ForgeObject? ObjectPtrFCurve { get; set; }
+        public ForgeObject ObjectPtrFCurve { get; set; }
         public int NumKeys { get; set; }
-        public FCurveKey[]? Keys { get; set; }
+        public FCurveKey[] Keys { get; set; }
         public float DefaultValue { get; set; }
 
         public FCurve()
@@ -1341,7 +1341,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class FCurveKey
     {
-        public ForgeObject? ObjectPtrFCurveKey { get; set; }
+        public ForgeObject ObjectPtrFCurveKey { get; set; }
         public Vector2 Point { get; set; }
         public Vector2 PreviousTangentPoint { get; set; }
         public Vector2 NextTangentPoint { get; set; }
@@ -1367,8 +1367,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class AmbientEventManager
     {
-        public ForgeBaseObject? BaseObjectAmbientEventManager { get; set; }
-        public ForgeFileReference? AmbientSpawnDirector { get; set; }
+        public ForgeBaseObject BaseObjectAmbientEventManager { get; set; }
+        public ForgeFileReference AmbientSpawnDirector { get; set; }
 
         public AmbientEventManager()
         {
@@ -1386,8 +1386,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ZoneSpawnerManager
     {
-        public ForgeBaseObject? BaseObjectZoneSpawnerManager { get; set; }
-        public ZoneSpawnerLoadingAdvisor? LoadingAdvisor { get; set; }
+        public ForgeBaseObject BaseObjectZoneSpawnerManager { get; set; }
+        public ZoneSpawnerLoadingAdvisor LoadingAdvisor { get; set; }
 
         public ZoneSpawnerManager()
         {
@@ -1405,10 +1405,10 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ZoneSpawnerLoadingAdvisor
     {
-        public ForgeBaseObject? BaseObjectZoneSpawnerLoadingAdvisor { get; set; }
-        public ZoneSpawnerLoadingSettings? Settings { get; set; }
+        public ForgeBaseObject BaseObjectZoneSpawnerLoadingAdvisor { get; set; }
+        public ZoneSpawnerLoadingSettings Settings { get; set; }
         public int NumEntitySummaries { get; set; }
-        public ZoneSpawnerEntitySummary[]? ZoneSpawnerEntitySummaries { get; set; }
+        public ZoneSpawnerEntitySummary[] ZoneSpawnerEntitySummaries { get; set; }
 
         public ZoneSpawnerLoadingAdvisor()
         {
@@ -1435,7 +1435,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ZoneSpawnerLoadingSettings
     {
-        public ForgeBaseObject? BaseObjectZoneSpawnerLoadingAdvisor { get; set; }
+        public ForgeBaseObject BaseObjectZoneSpawnerLoadingAdvisor { get; set; }
         public float UnloadBufferDistance { get; set; }
 
         public ZoneSpawnerLoadingSettings()
@@ -1453,7 +1453,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ZoneSpawnerEntitySummary
     {
-        public ForgeObjectPtr? ObjectPtrZoneSpawnerEntitySummary { get; set; }
+        public ForgeObjectPtr ObjectPtrZoneSpawnerEntitySummary { get; set; }
 
         public ZoneSpawnerEntitySummary()
         {
@@ -1492,14 +1492,14 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SpaceSection
     {
-        public object? PtrSpaceSection { get; set; }
+        public object PtrSpaceSection { get; set; }
         public int NumPortals { get; set; }
-        public SpacePortal[]? Portals { get; set; }
+        public SpacePortal[] Portals { get; set; }
         public int NumLinkedSections { get; set; }
-        public SpaceSection[]? LinkedSections { get; set; }
+        public SpaceSection[] LinkedSections { get; set; }
         public short ExteriorLinkedPortalsIndex { get; set; }
         public int NumObjectShapes { get; set; }
-        public ObjectShape[]? ObjectShapes { get; set; }
+        public ObjectShape[] ObjectShapes { get; set; }
         public int Priority { get; set; }
         public bool IsInterior { get; set; }
         public int InteriorReactionType { get; set; }
@@ -1507,7 +1507,7 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool NoWater { get; set; }
         public bool IsWallaInterior { get; set; }
         public bool LinksOnlyToExterior { get; set; }
-        public ForgeFileReference? InteriorAbilitySet { get; set; }
+        public ForgeFileReference InteriorAbilitySet { get; set; }
         public ushort FindShortestPathsearchPointsLimit { get; set; }
         public bool EnableSoundOcclusion { get; set; }
         public bool IsClosedInterior { get; set; }
@@ -1600,11 +1600,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SoundOcclusionPortalExteriorLinksTable
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrSoundOcclusionPortal { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrSoundOcclusionPortal { get; set; }
         public int NumPortalListTable { get; set; }
-        public SpacePortal[]? PortalListTable { get; set; }
+        public SpacePortal[] PortalListTable { get; set; }
         public int NumLowerListTable { get; private set; }
-        public ushort[]? PortalListLowerBoundIndexTable { get; private set; }
+        public ushort[] PortalListLowerBoundIndexTable { get; private set; }
 
         public SoundOcclusionPortalExteriorLinksTable()
         {
@@ -1660,18 +1660,18 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class MetaAISystemicEventTrackingManager
     {
-        public ForgeBaseObject? BaseObjectMetaAISystemicEventTrackingManager { get; set; }
+        public ForgeBaseObject BaseObjectMetaAISystemicEventTrackingManager { get; set; }
         public float Unknown_0h { get; set; }
         public float Unknown_4h { get; set; }
         public float Unknown_8h { get; set; }
-        public ForgeFileReference? Unknown_Ch { get; set; }
-        public ForgeFileReference? Unknown_10h { get; set; }
-        public ForgeFileReference? Unknown_14h { get; set; }
-        public ForgeFileReference? Unknown_18h { get; set; }
-        public ForgeFileReference? Unknown_1Ch { get; set; }
-        public ForgeFileReference? MilitaryLabel { get; set; }
-        public ForgeFileReference? CivilianLabel { get; set; }
-        public ForgeFileReference? Unknown_52h { get; set; }
+        public ForgeFileReference Unknown_Ch { get; set; }
+        public ForgeFileReference Unknown_10h { get; set; }
+        public ForgeFileReference Unknown_14h { get; set; }
+        public ForgeFileReference Unknown_18h { get; set; }
+        public ForgeFileReference Unknown_1Ch { get; set; }
+        public ForgeFileReference MilitaryLabel { get; set; }
+        public ForgeFileReference CivilianLabel { get; set; }
+        public ForgeFileReference Unknown_52h { get; set; }
 
         public MetaAISystemicEventTrackingManager()
         {
@@ -1726,11 +1726,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SpawnNPCInfo
     {
-        public ForgeObject? ObjectSpawnNPCInfo { get; set; }
+        public ForgeObject ObjectSpawnNPCInfo { get; set; }
         public int DisplayNameLength { get; set; }
         public string DisplayName { get; set; } = string.Empty;
         public byte NullTerminator { get; set; }
-        public ForgeFileReference? Objective { get; set; }
+        public ForgeFileReference Objective { get; set; }
 
         public SpawnNPCInfo()
         {
@@ -1756,11 +1756,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SpawnObjectInfo
     {
-        public ForgeObject? ObjectSpawnObjectInfo { get; set; }
+        public ForgeObject ObjectSpawnObjectInfo { get; set; }
         public int DisplayNameLength { get; set; }
         public string DisplayName { get; set; } = string.Empty;
         public byte NullTerminator { get; set; }
-        public SpawnObjectParams? SpawnParams { get; set; }
+        public SpawnObjectParams SpawnParams { get; set; }
 
         public SpawnObjectInfo()
         {
@@ -1798,11 +1798,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SpawnWaterVehicleInfo
     {
-        public ForgeObject? ObjectSpawnWaterVehicleInfo { get; set; }
+        public ForgeObject ObjectSpawnWaterVehicleInfo { get; set; }
         public int DisplayNameLength { get; set; }
         public string DisplayName { get; set; } = string.Empty;
         public byte NullTerminator { get; set; }
-        public ForgeFileReference? Objective { get; set; }
+        public ForgeFileReference Objective { get; set; }
 
         public SpawnWaterVehicleInfo()
         {
@@ -1840,19 +1840,19 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SpawnObjectParams
     {
-        public ForgeBaseObject? BaseObjectSpawnObjectParams { get; set; }
-        public BuildTags? Tags { get; set; }
+        public ForgeBaseObject BaseObjectSpawnObjectParams { get; set; }
+        public BuildTags Tags { get; set; }
         public int NumWeaponTags { get; set; }
-        public BuildTags[]? WeaponTags { get; set; }
+        public BuildTags[] WeaponTags { get; set; }
         public int SeedToUseForGeneration { get; set; }
-        public DynamicReference? TagBuilderDynamicRef { get; set; }
+        public DynamicReference TagBuilderDynamicRef { get; set; }
         public bool Exclusive { get; set; }
         public int ExclusiveNPCType { get; set; }
         public int ExplicitNPC { get; set; }
-        public ForgeBaseObjectPtr? SelectionFilter { get; set; }
-        public ForgeFileReference? EntityPack { get; set; }
-        public ForgeObjectPtr? EntityPackHandle { get; set; }
-        public ForgeObjectPtr? TemplateEntity { get; set; }
+        public ForgeBaseObjectPtr SelectionFilter { get; set; }
+        public ForgeFileReference EntityPack { get; set; }
+        public ForgeObjectPtr EntityPackHandle { get; set; }
+        public ForgeObjectPtr TemplateEntity { get; set; }
 
         public SpawnObjectParams()
         {
@@ -1900,11 +1900,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class DebugRideableAnimalInfo
     {
-        public ForgeObject? ObjectSpawnObjectInfo { get; set; }
+        public ForgeObject ObjectSpawnObjectInfo { get; set; }
         public int DisplayNameLength { get; set; }
         public string DisplayName { get; set; } = string.Empty;
         public int NullTerminator { get; set; }
-        public ForgeFileReference? Objective { get; set; }
+        public ForgeFileReference Objective { get; set; }
 
         public DebugRideableAnimalInfo()
         {
@@ -1930,8 +1930,8 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class FactionSelector
     {
-        public ForgeBaseObject? BaseObjectFactionSelector { get; set; }
-        public ForgeObjectPtr? Faction { get; set; }
+        public ForgeBaseObject BaseObjectFactionSelector { get; set; }
+        public ForgeObjectPtr Faction { get; set; }
 
         public FactionSelector()
         {
@@ -1949,7 +1949,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SoundInstance
     {
-        public ForgeBaseObject? BaseObjectSoundInstance { get; set; }
+        public ForgeBaseObject BaseObjectSoundInstance { get; set; }
 
         public SoundInstance()
         {
@@ -1966,7 +1966,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SoundState
     {
-        public ForgeObjectPtr? ObjectPtrSoundInstance { get; set; }
+        public ForgeObjectPtr ObjectPtrSoundInstance { get; set; }
 
         public SoundState()
         {
@@ -1983,12 +1983,12 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class DesynchronizationSettings
     {
-        public ForgeBaseObject? ObjectDesynchronizationSettings { get; set; }
-        public UIString? OutOfBoundsFailure { get; private set; }
-        public UIString? PlayerDeathFailure { get; private set; }
-        public UIString? Unknown1 { get; private set; }
+        public ForgeBaseObject ObjectDesynchronizationSettings { get; set; }
+        public UIString OutOfBoundsFailure { get; private set; }
+        public UIString PlayerDeathFailure { get; private set; }
+        public UIString Unknown1 { get; private set; }
         public int NumLockMovementList { get; private set; }
-        public uint[]? LockMovementList { get; private set; }
+        public uint[] LockMovementList { get; private set; }
 
         public DesynchronizationSettings()
         {
@@ -2020,7 +2020,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class UIString
     {
-        public ForgeBaseObject? BaseObjectUIString { get; set; }
+        public ForgeBaseObject BaseObjectUIString { get; set; }
         public int OasisLineID { get; private set; }
         public int TempStringLength { get; private set; }
         public string TempString { get; private set; } = string.Empty;
@@ -2042,7 +2042,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SpecialAbilityDataAbstract
     {
-        public ForgeObjectPtr? ObjectPtrSpecialAbilityDataAbstract { get; set; }
+        public ForgeObjectPtr ObjectPtrSpecialAbilityDataAbstract { get; set; }
 
         public SpecialAbilityDataAbstract()
         {
@@ -2057,7 +2057,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class TagRules
     {
-        public ForgeFileReference? Rule { get; set; }
+        public ForgeFileReference Rule { get; set; }
 
         public TagRules()
         {
@@ -2072,7 +2072,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class WorldMapParameters
     {
-        public ForgeBaseObject? BaseObjectWorldMapParameters { get; set; }
+        public ForgeBaseObject BaseObjectWorldMapParameters { get; set; }
         public float XMin { get; private set; }
         public float XMax { get; private set; }
         public float YMin { get; private set; }
@@ -2096,7 +2096,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class BoundingVolume
     {
-        public ForgeBaseObject? BaseObjectBoundingVolume { get; set; }
+        public ForgeBaseObject BaseObjectBoundingVolume { get; set; }
         public Vector3 InstanceOriginalBVMin { get; set; }
         public Vector3 InstanceOriginalBVMax { get; set; }
         public BoundingVolumeType? BoundingVolumeType { get; set; }

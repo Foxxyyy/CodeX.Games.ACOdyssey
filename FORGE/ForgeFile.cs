@@ -153,7 +153,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             throw new NotImplementedException();
         }
 
-        public override byte[]? ExtractFile(GameArchiveFileInfo f, bool compressed = false)
+        public override byte[] ExtractFile(GameArchiveFileInfo f, bool compressed = false)
         {
             try
             {
@@ -166,9 +166,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
             }
         }
 
-        public byte[]? ExtractFileResource(ForgeEntry entry, BinaryReader br, bool compressed = false)
+        public byte[] ExtractFileResource(ForgeEntry entry, BinaryReader br, bool compressed = false)
         {
-            byte[]? data = new byte[entry.Size];
+            byte[] data = new byte[entry.Size];
             br.BaseStream.Seek(entry.Offset, SeekOrigin.Begin);
             data = br.ReadBytes((int)entry.Size);
 
@@ -179,7 +179,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             return data;
         }
 
-        public static GameArchiveEntry? FindEntryByFileID(List<GameArchive> archives, long fileID)
+        public static GameArchiveEntry FindEntryByFileID(List<GameArchive> archives, long fileID)
         {
             foreach (var archive in archives)
             {
@@ -282,12 +282,12 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class ForgeEntry : GameArchiveEntryBase, GameArchiveFileInfo
     {
-        public ForgeNameTable? NameTable { get; set; }
+        public ForgeNameTable NameTable { get; set; }
         public long Offset { get; set; }
         public long FileID { get; set; }
         public string ResourceType { get; set; } = "File";
 
-        private string? _Attributes;
+        private string _Attributes;
         public override string Attributes
         {
             get

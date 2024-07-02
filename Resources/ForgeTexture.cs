@@ -8,7 +8,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 {
     public class ForgeTexture : Texture
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrTexture { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrTexture { get; set; }
         public uint ArraySize { get; set; }
         public ForgeTextureFormat FTextureFormat { get; set; }
         public GammaSettings Gamma { get; set; }
@@ -91,14 +91,12 @@ namespace CodeX.Games.ACOdyssey.Resources
             }
             else
             {
-                Width = ct.Width;
-                Height = ct.Height;
-                MipLevels = ct.MipLevels;
-                Format = ct.Format;
+                MipLevels = 1;
+                Sampler = TextureSampler.Create(TextureSamplerFilter.Anisotropic, TextureAddressMode.Wrap);
             }
         }
 
-        public void ReadMipData(DataReader reader) //CompiledMip
+        public byte[] ReadMipData(DataReader reader, bool mip0 = true) //CompiledMip //Pedestal_Broken_DiffuseMap
         {
             var header = new ForgeDataHeader()
             {
@@ -106,12 +104,11 @@ namespace CodeX.Games.ACOdyssey.Resources
                 FileSize = reader.ReadInt32(),
                 FileNameSize = reader.ReadInt32()
             };
-            header.FileName = new(reader.ReadChars(header.FileNameSize));
 
+            header.FileName = new(reader.ReadChars(header.FileNameSize));
             reader.BaseStream.Position += 0x12;
-            Data = reader.ReadBytes(header.FileSize - 0x12);
-            Sampler = TextureSampler.Create(TextureSamplerFilter.Anisotropic, TextureAddressMode.Wrap);
-            MipLevels = 1;
+
+            return reader.ReadBytes(header.FileSize - 0x12);
         }
 
         public TextureFormat ConvertToFormat(DXT format)

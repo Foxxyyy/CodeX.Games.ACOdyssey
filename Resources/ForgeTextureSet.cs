@@ -5,21 +5,21 @@ namespace CodeX.Games.ACOdyssey.Resources
 {
     public class ForgeTextureSet
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrTextureSet { get; set; }
-        public ForgeFileReference? DiffuseMap { get; set; } //1
-        public ForgeFileReference? NormalMap { get; set; } //2
-        public ForgeFileReference? SpecularMap { get; set; } //3
-        public ForgeFileReference? SpecularPowerMap { get; set; } //4
-        public ForgeFileReference? OffetBumpMap { get; set; } //5
-        public ForgeFileReference? EmissiveMap { get; set; } //6
-        public ForgeFileReference? TransmissionMap { get; set; } //7
-        public ForgeFileReference? Mask1Map { get; set; } //8
-        public ForgeFileReference? Mask2Map { get; set; } //9
-        public ForgeFileReference? OcclusionMap { get; set; } //10
-        public ForgeFileReference? RoughnessMap { get; set; } //11
-        public ForgeFileReference? GenericMap { get; set; } //12
-        public ForgeFileReference? UnknownMap1 { get; set; } //13
-        public ForgeFileReference? UnknownMap2 { get; set; } //14
+        public ForgeBaseObjectPtr BaseObjectPtrTextureSet { get; set; }
+        public ForgeFileReference DiffuseMap { get; set; } //1
+        public ForgeFileReference NormalMap { get; set; } //2
+        public ForgeFileReference SpecularMap { get; set; } //3
+        public ForgeFileReference SpecularPowerMap { get; set; } //4
+        public ForgeFileReference OffetBumpMap { get; set; } //5
+        public ForgeFileReference EmissiveMap { get; set; } //6
+        public ForgeFileReference TransmissionMap { get; set; } //7
+        public ForgeFileReference Mask1Map { get; set; } //8
+        public ForgeFileReference Mask2Map { get; set; } //9
+        public ForgeFileReference OcclusionMap { get; set; } //10
+        public ForgeFileReference RoughnessMap { get; set; } //11
+        public ForgeFileReference GenericMap { get; set; } //12
+        public ForgeFileReference UnknownMap1 { get; set; } //13
+        public ForgeFileReference UnknownMap2 { get; set; } //14
         public int UserCategory { get; set; }
 
         public ForgeTextureSet()

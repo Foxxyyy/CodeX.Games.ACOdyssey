@@ -15,28 +15,28 @@ namespace CodeX.Games.ACOdyssey.Resources
     [TC(typeof(EXP))]
     public class ForgeModel : Piece
     {
-        public ForgeDataHeader? Header { get; set; }
-        public ForgeBaseObjectPtr? BaseObjectPtrModel { get; set; }
+        public ForgeDataHeader Header { get; set; }
+        public ForgeBaseObjectPtr BaseObjectPtrModel { get; set; }
         public byte DescriptorMask { get; set; }
         public bool Generated { get; set; }
         public bool HasHighOverdraw { get; set; }
         public float MaxCullingDistance { get; set; }
         public int EstimatedMemoryUsage { get; set; }
         public int NumSubMeshes { get; set; }
-        public SubMesh[]? SubMeshes { get; set; }
+        public SubMesh[] SubMeshes { get; set; }
         public int NumBones { get; set; }
-        public MeshBone[]? Bones { get; set; }
+        public MeshBone[] Bones { get; set; }
         public int NumBlendShapes { get; set; }
-        public SubMeshesBlendShapeID[]? BlendShapesIDs { get; set; }
-        public SkinWrapProxyMesh? SkinWrapProxyMesh { get; set; }
-        public SkinWrapLayerMesh? SkinWrapLayerMesh { get; set; }
+        public SubMeshesBlendShapeID[] BlendShapesIDs { get; set; }
+        public SkinWrapProxyMesh SkinWrapProxyMesh { get; set; }
+        public SkinWrapLayerMesh SkinWrapLayerMesh { get; set; }
         public Vector4 LocalExtentMin { get; set; }
         public Vector4 LocalExtentMax { get; set; }
-        public ForgeCompiledMesh? CompiledMesh { get; set; }
-        public Mesh[]? Meshes { get; set; }
-        public ForgeFileReference? TracePreciseMeshShape { get; set; }
+        public ForgeCompiledMesh CompiledMesh { get; set; }
+        public Mesh[] Meshes { get; set; }
+        public ForgeFileReference TracePreciseMeshShape { get; set; }
         public int NumMaterials { get; set; }
-        public ForgeFileReference[]? Materials { get; set; }
+        public ForgeFileReference[] Materials { get; set; }
         public bool Dynamic { get; set; }
         public bool PrecomputedSkinning { get; set; }
         public bool RecomputeTBN { get; set; }
@@ -53,9 +53,9 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool UseSkinWrap { get; set; }
         public bool UseBlendShape { get; set; }
         public bool MorphEnabled { get; set; }
-        public ForgeFileReference? MorphDisplacementTexture { get; set; }
+        public ForgeFileReference MorphDisplacementTexture { get; set; }
         public int NumMappings { get; set; }
-        public MorphMapping[]? MorphMappings { get; set; }
+        public MorphMapping[] MorphMappings { get; set; }
         public float MorphMinRange { get; set; }
         public float MorphMaxRange { get; set; }
         public float MorphMultiplier { get; set; }
@@ -80,7 +80,7 @@ namespace CodeX.Games.ACOdyssey.Resources
         {
         }
 
-        public ForgeModel(ForgeModel? model)
+        public ForgeModel(ForgeModel model)
         {
             if (model != null)
             {
@@ -329,7 +329,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
                 Meshes[i] = new Mesh
                 {
-                    VertexCount = (int)id[i].NumVertices,
+                    VertexCount = id[i].NumVertices,
                     VertexStride = actualStride,
                     VertexLayout = new VertexLayout(elements),
                     VertexData = vertexBuffer,
@@ -633,11 +633,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ForgeCompiledMesh
     {
-        public ForgeObject? ObjectCompiledMesh;
+        public ForgeObject ObjectCompiledMesh;
         public int NumDataBytes;
-        public byte[]? Data;
-        public ForgeClusteredMeshData? ClusteredMeshData;
-        public ForgeMeshData? MeshData;
+        public byte[] Data;
+        public ForgeClusteredMeshData ClusteredMeshData;
+        public ForgeMeshData MeshData;
         public int NumInstancingData;
         public ForgeMeshInstancingData[] InstancingData;
         public uint PlatformVersion;
@@ -721,7 +721,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ForgeClusteredMeshData
     {
-        public ForgeObject? ObjectForgeClusteredMeshData { get; set; }
+        public ForgeObject ObjectForgeClusteredMeshData { get; set; }
         public uint Version { get; set; }
         public byte VertexFormat { get; set; }
         public uint VertexStride { get; set; }
@@ -735,13 +735,13 @@ namespace CodeX.Games.ACOdyssey.Resources
         public int NumPrimitives { get; set; }
         public ClusteredPrimitiveInfo[] DrawPrimitives { get; set; }
         public ForgeDataBuffer VertexBuffer0 { get; set; }
-        public ForgeDataBuffer? VertexBuffer1 { get; set; }
-        public ForgeDataBuffer? VertexBuffer2 { get; set; }
-        public ForgeDataBuffer? VertexBuffer3 { get; set; }
+        public ForgeDataBuffer VertexBuffer1 { get; set; }
+        public ForgeDataBuffer VertexBuffer2 { get; set; }
+        public ForgeDataBuffer VertexBuffer3 { get; set; }
         public ForgeDataBuffer IndexBuffer { get; set; }
-        public ForgeDataBuffer? ClusteredDescData { get; set; }
-        public ForgeDataBuffer? ClusterBitMask { get; set; }
-        public ForgeDataBuffer? PrimitiveDescData { get; set; }
+        public ForgeDataBuffer ClusteredDescData { get; set; }
+        public ForgeDataBuffer ClusterBitMask { get; set; }
+        public ForgeDataBuffer PrimitiveDescData { get; set; }
 
         public ForgeClusteredMeshData()
         {
@@ -804,7 +804,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ForgeMeshData
     {
-        public ForgeBaseObject? BaseObjectForgeMeshData { get; set; }
+        public ForgeBaseObject BaseObjectForgeMeshData { get; set; }
         public int MeshCount { get; set; }
         public bool IsIndexBuffer32bit { get; set; }
         public byte VertexFormat { get; set; }
@@ -818,12 +818,12 @@ namespace CodeX.Games.ACOdyssey.Resources
         public byte NbFaceIndices { get; set; }
         public byte FaceIndicesStartOffset { get; set; }
         public int NumStandardPrimitives { get; set; }
-        public MeshPrimitive[]? StandardPrimitives { get; set; }
-        public ForgeDataBuffer? VertexBuffer0 { get; set; }
-        public ForgeDataBuffer? VertexBuffer1 { get; set; }
-        public ForgeDataBuffer? VertexBuffer2 { get; set; }
-        public ForgeDataBuffer? VertexBuffer3 { get; set; }
-        public ForgeDataBuffer? IndexBuffer { get; set; }
+        public MeshPrimitive[] StandardPrimitives { get; set; }
+        public ForgeDataBuffer VertexBuffer0 { get; set; }
+        public ForgeDataBuffer VertexBuffer1 { get; set; }
+        public ForgeDataBuffer VertexBuffer2 { get; set; }
+        public ForgeDataBuffer VertexBuffer3 { get; set; }
+        public ForgeDataBuffer IndexBuffer { get; set; }
 
         public ForgeMeshData()
         {
@@ -873,13 +873,13 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ForgeMeshInstancingData
     {
-        public ForgeBaseObject? BaseObjectForgeMeshInstancingData { get; set; }
+        public ForgeBaseObject BaseObjectForgeMeshInstancingData { get; set; }
         public bool ShadowCaster { get; set; }
         public ushort SubMeshIndex { get; set; }
         public ushort MaterialType { get; set; }
         public ushort NumVertices { get; set; }
         public ushort RenderingMask { get; set; }
-        public ForgeObjectPtr? Material { get; set; }
+        public ForgeObjectPtr Material { get; set; }
 
         public ForgeMeshInstancingData()
         {
@@ -903,7 +903,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class MeshPrimitive
     {
-        public ForgeBaseObject? BaseObjectMeshPrimitive { get; set; }
+        public ForgeBaseObject BaseObjectMeshPrimitive { get; set; }
         public uint MinIndex { get; set; }
         public uint IsUsingDepthOnlyBuffers { get; set; }
         public uint NumVertices { get; set; }
@@ -931,7 +931,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class ClusteredPrimitiveInfo
     {
-        public ForgeBaseObject? BaseObjectClusteredPrimitiveInfo { get; set; }
+        public ForgeBaseObject BaseObjectClusteredPrimitiveInfo { get; set; }
         public int ClusterCount { get; set; }
         public int IndexStart { get; set; }
         public int VertexStart { get; set; }
@@ -988,7 +988,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class MeshBone
     {
-        public ForgeBaseObject? BaseObjectMeshBone { get; set; }
+        public ForgeBaseObject BaseObjectMeshBone { get; set; }
         public BoneID BoneID { get; private set; }
         public Matrix4x4 InitialMatrixInverse { get; private set; }
         public bool IsUsedBySubMeshes { get; private set; }
@@ -1023,19 +1023,19 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SkinWrapProxyMesh
     {
-        public ForgeObject? ObjectPtrSkinWrapLayerMesh { get; set; }
+        public ForgeObject ObjectPtrSkinWrapLayerMesh { get; set; }
         public int NumVertices { get; set; }
-        public Vector3[]? Vertices { get; set; }
+        public Vector3[] Vertices { get; set; }
         public int NumNormals { get; set; }
-        public Vector3[]? Normals { get; set; }
+        public Vector3[] Normals { get; set; }
         public int NumIndices { get; set; }
-        public ushort[]? Indices { get; set; }
+        public ushort[] Indices { get; set; }
         public int NumProjectedNormals { get; set; }
-        public float[]? ProjectedNormals { get; set; }
+        public float[] ProjectedNormals { get; set; }
         public int NumTriangles { get; set; }
-        public SkinWrapProxyMeshTriangle[]? Triangles { get; set; }
+        public SkinWrapProxyMeshTriangle[] Triangles { get; set; }
         public int NumTargets { get; set; }
-        public SkinWrapProxyMeshTarget[]? Targets { get; set; }
+        public SkinWrapProxyMeshTarget[] Targets { get; set; }
 
         public SkinWrapProxyMesh()
         {
@@ -1104,19 +1104,19 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SkinWrapLayerMesh
     {
-        public ForgeObject? ObjectPtrSkinWrapLayerMesh { get; set; }
+        public ForgeObject ObjectPtrSkinWrapLayerMesh { get; set; }
         public int NumX { get; set; }
-        public float[]? FloatsX { get; set; }
+        public float[] FloatsX { get; set; }
         public int NumY { get; set; }
-        public float[]? FloatsY { get; set; }
+        public float[] FloatsY { get; set; }
         public int NumZ { get; set; }
-        public float[]? FloatsZ { get; set; }
+        public float[] FloatsZ { get; set; }
         public int NumSkinLayerMeshIndex { get; set; }
-        public byte[]? SkinWrapLayerMeshIndexData { get; set; }
+        public byte[] SkinWrapLayerMeshIndexData { get; set; }
         public int NumWeightIndices { get; set; }
-        public SkinWrapLayerMeshPackedWeightIndicesArray[]? WeightIndices { get; set; }
+        public SkinWrapLayerMeshPackedWeightIndicesArray[] WeightIndices { get; set; }
         public int NumWeights { get; set; }
-        public SkinWrapLayerMeshPackedWeightsArray[]? Weights { get; set; }
+        public SkinWrapLayerMeshPackedWeightsArray[] Weights { get; set; }
 
         public SkinWrapLayerMesh()
         {
@@ -1180,7 +1180,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SkinWrapProxyMeshTriangle
     {
-        public ForgeBaseObject? BaseObjectSkinWrapProxyMeshTriangle { get; set; }
+        public ForgeBaseObject BaseObjectSkinWrapProxyMeshTriangle { get; set; }
         public float PlaneNormalX { get; set; }
         public float PlaneNormalY { get; set; }
         public float PlaneNormalZ { get; set; }
@@ -1222,10 +1222,10 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SkinWrapProxyMeshTarget
     {
-        public ForgeBaseObject? BaseObjectSkinWrapProxyMeshTarget { get; set; }
+        public ForgeBaseObject BaseObjectSkinWrapProxyMeshTarget { get; set; }
         public int ID { get; set; }
         public int NumOffsets { get; set; }
-        public ushort[]? Offsets { get; set; }
+        public ushort[] Offsets { get; set; }
 
         public SkinWrapProxyMeshTarget()
         {
@@ -1249,11 +1249,11 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SkinWrapLayerMeshPackedWeightIndicesArray
     {
-        public ForgeBaseObject? BaseObjectClass { get; set; }
+        public ForgeBaseObject BaseObjectClass { get; set; }
         public int NumFormats { get; set; }
-        public byte[]? Formats { get; set; }
+        public byte[] Formats { get; set; }
         public int NumIndices { get; set; }
-        public byte[]? Indices { get; set; }
+        public byte[] Indices { get; set; }
 
         public SkinWrapLayerMeshPackedWeightIndicesArray()
         {
@@ -1274,9 +1274,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class SkinWrapLayerMeshPackedWeightsArray
     {
-        public ForgeBaseObject? BaseObjectClass { get; set; }
+        public ForgeBaseObject BaseObjectClass { get; set; }
         public int NumWeights { get; set; }
-        public byte[]? Weights { get; set; }
+        public byte[] Weights { get; set; }
 
         public SkinWrapLayerMeshPackedWeightsArray()
         {

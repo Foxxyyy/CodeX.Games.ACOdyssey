@@ -6,7 +6,7 @@ namespace CodeX.Games.ACOdyssey.Resources
     public class ForgeCellData
     {
         public int NumberOfObjects { get; set; }
-        public ForgeFileReference[]? Objects { get; set; }
+        public ForgeFileReference[] Objects { get; set; }
         public int NumberOfObjectsToActivate { get; set; }
         public long OwnerRelatedIndex { get; set; }
 

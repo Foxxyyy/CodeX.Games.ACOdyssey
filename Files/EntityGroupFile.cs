@@ -11,10 +11,10 @@ namespace CodeX.Games.ACOdyssey.Files
     public class EntityGroupFile
     {
         public ForgeEntityGroup EntityGroup;
-        public List<ForgeModel>? EmbeddedMeshes;
-        public List<ForgeMaterial>? EmbeddedMaterials;
-        public List<ForgeTextureSet>? EmbeddedTextureSets;
-        public List<ForgeLODSelector>? EmbeddedLODSelector;
+        public List<ForgeModel> EmbeddedMeshes;
+        public List<ForgeMaterial> EmbeddedMaterials;
+        public List<ForgeTextureSet> EmbeddedTextureSets;
+        public List<ForgeLODSelector> EmbeddedLODSelector;
         public JenkHash Hash;
         public string Name;
 
@@ -77,11 +77,6 @@ namespace CodeX.Games.ACOdyssey.Files
                         throw new Exception("Unknown resource block found in EntityGroup...");
                 }
             }
-        }
-
-        public string ToString(List<GameArchive> archives)
-        {
-            return string.Empty;
         }
     }
 }

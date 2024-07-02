@@ -6,21 +6,21 @@ namespace CodeX.Games.ACOdyssey.FORGE
 {
     public class ForgeGameplayCoordinator
     {
-        public ForgeBaseObjectPtr? BaseObjectPtrGameplayCoordinator { get; set; }
-        public GameplayAbstract? GameplayLogic { get; set; }
-        public GameplayCoordinatorSettings? Settings { get; set; }
-        public GameplayCoordinatorOutput? DoneOutput { get; private set; }
-        public GameplayCoordinatorOutput? CompletedOutput { get; private set; }
-        public GameplayCoordinatorOutput? AbortedOutput { get; private set; }
-        public GameplayCoordinatorOutput? AbortedInternallyOutput { get; private set; }
-        public GameplayCoordinatorOutput? AbortedExternallyOutput { get; private set; }
-        public GameplayCoordinatorOutput? SuccessOutput { get; private set; }
-        public GameplayCoordinatorOutput? FailureOutput { get; private set; }
-        public GameplayCoordinatorOutput? StartedOutput { get; private set; }
-        public GameplayCoordinatorOutput? PausedOutput { get; private set; }
-        public GameplayCoordinatorOutput? UnpausedOutput { get; private set; }
-        public GameplayCoordinatorOutput? HardPausedOutput { get; private set; }
-        public GameplayCoordinatorOutput? HardUnpausedOutput { get; private set; }
+        public ForgeBaseObjectPtr BaseObjectPtrGameplayCoordinator { get; set; }
+        public GameplayAbstract GameplayLogic { get; set; }
+        public GameplayCoordinatorSettings Settings { get; set; }
+        public GameplayCoordinatorOutput DoneOutput { get; private set; }
+        public GameplayCoordinatorOutput CompletedOutput { get; private set; }
+        public GameplayCoordinatorOutput AbortedOutput { get; private set; }
+        public GameplayCoordinatorOutput AbortedInternallyOutput { get; private set; }
+        public GameplayCoordinatorOutput AbortedExternallyOutput { get; private set; }
+        public GameplayCoordinatorOutput SuccessOutput { get; private set; }
+        public GameplayCoordinatorOutput FailureOutput { get; private set; }
+        public GameplayCoordinatorOutput StartedOutput { get; private set; }
+        public GameplayCoordinatorOutput PausedOutput { get; private set; }
+        public GameplayCoordinatorOutput UnpausedOutput { get; private set; }
+        public GameplayCoordinatorOutput HardPausedOutput { get; private set; }
+        public GameplayCoordinatorOutput HardUnpausedOutput { get; private set; }
 
         public ForgeGameplayCoordinator()
         {
@@ -85,10 +85,10 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class GameplayPlayer : GameplayAbstract
     {
-        public ForgeObject? ObjectGameplayLogic { get; set; }
-        public SpawningSpecification? PlayerSpecification { get; set; }
-        public SpawningSpecification? EagleSpecification { get; set; }
-        public SpawningSpecification? FirstPersonPlayerSpecification { get; set; }
+        public ForgeObject ObjectGameplayLogic { get; set; }
+        public SpawningSpecification PlayerSpecification { get; set; }
+        public SpawningSpecification EagleSpecification { get; set; }
+        public SpawningSpecification FirstPersonPlayerSpecification { get; set; }
 
         public GameplayPlayer()
         {
@@ -112,14 +112,14 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class GameplayComplexCrowdLife : GameplayAbstract
     {
-        public ForgeObject? ObjectGameplayLogic { get; set; }
-        public CrowdLifeConfiguration? Configuration { get; set; }
+        public ForgeObject ObjectGameplayLogic { get; set; }
+        public CrowdLifeConfiguration Configuration { get; set; }
         public float GoToReachDistance { get; set; }
         public bool PersistOnSpawnSucceeded { get; set; }
         public bool PersistOnVirtualPatrol { get; set; }
         public bool AllowAcrobatics { get; set; }
         public bool IsManager { get; set; }
-        public EntityControlOptions? ReferencingOptions { get; set; }
+        public EntityControlOptions ReferencingOptions { get; set; }
 
         public GameplayComplexCrowdLife()
         {
@@ -146,7 +146,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class EntityControlOptions
     {
-        public ForgeBaseObject? BaseObjectEntityControlOptions { get; set; }
+        public ForgeBaseObject BaseObjectEntityControlOptions { get; set; }
         public bool AllowInterruptions { get; set; }
         public bool DisableForceUnspawn { get; set; }
         public bool QueueRequest { get; set; }
@@ -170,7 +170,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class CrowdLifeConfiguration
     {
-        public ForgeObject? ObjectGameplayLogic { get; set; }
+        public ForgeObject ObjectGameplayLogic { get; set; }
         public uint UnspawnMode { get; set; }
         public int NumStationBlock { get; set; }
 
@@ -190,14 +190,14 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SpawningSpecification
     {
-        public object? ObjectSpawningSpecification { get; set; }
-        public SpawnStrategyParams? StrategyParams { get; set; }
-        public SpawnPositionParams? PositionParams { get; set; }
+        public object ObjectSpawningSpecification { get; set; }
+        public SpawnStrategyParams StrategyParams { get; set; }
+        public SpawnPositionParams PositionParams { get; set; }
         public int NumEntityParams { get; set; }
-        public SpawnPlayerParams[]? EntityParams { get; set; }
+        public SpawnPlayerParams[] EntityParams { get; set; }
         public bool StayReferencable { get; set; }
-        public ForgeObjectPtr? GroupParams { get; set; }
-        public ForgeObjectPtr? AICondition { get; set; }
+        public ForgeObjectPtr GroupParams { get; set; }
+        public ForgeObjectPtr AICondition { get; set; }
 
         public SpawningSpecification()
         {
@@ -259,7 +259,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SpawnStrategyParams
     {
-        public ForgeObject? ObjectBlobStrategyParams { get; set; }
+        public ForgeObject ObjectBlobStrategyParams { get; set; }
 
         public SpawnStrategyParams()
         {
@@ -291,7 +291,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SpawnPositionParams
     {
-        public ForgeObject? ObjectSpawnPositionBlobParams { get; set; }
+        public ForgeObject ObjectSpawnPositionBlobParams { get; set; }
         public bool AllowSpawningOffNavmesh { get; set; }
         public bool Unknown_1h { get; set; }
         public bool Unknown_2h { get; set; }
@@ -300,7 +300,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
         public uint PositionType { get; set; }
         public Vector4 LocalSpawnPosition { get; set; }
         public Vector4 LocalSpawnOrientation { get; set; }
-        public ForgeObjectPtr? SpawnReferencePosition { get; set; }
+        public ForgeObjectPtr SpawnReferencePosition { get; set; }
 
         public SpawnPositionParams()
         {
@@ -350,18 +350,18 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SpawnPlayerParams
     {
-        public ForgeObject? ObjectSpawnPlayerParams { get; set; }
-        public BuildTags? Tags { get; set; }
+        public ForgeObject ObjectSpawnPlayerParams { get; set; }
+        public BuildTags Tags { get; set; }
         public int NumWeaponTags { get; set; }
-        public BuildTags[]? WeaponsTags { get; set; }
+        public BuildTags[] WeaponsTags { get; set; }
         public int SeedToUseForGeneration { get; set; }
-        public DynamicReference? TagBuilderDynamicRef { get; set; }
+        public DynamicReference TagBuilderDynamicRef { get; set; }
         public bool Exclusive { get; set; }
         public int ExclusiveNPCType { get; set; }
         public uint ExplicitNPC { get; set; }
-        public ForgeBaseObjectPtr? SelectionFilter { get; set; }
-        public ForgeFileReference? OverrideInitialAction { get; set; }
-        public ProgressionCharacterSelector? ProgressionCharacterSelector { get; set; }
+        public ForgeBaseObjectPtr SelectionFilter { get; set; }
+        public ForgeFileReference OverrideInitialAction { get; set; }
+        public ProgressionCharacterSelector ProgressionCharacterSelector { get; set; }
 
         public SpawnPlayerParams()
         {
@@ -406,9 +406,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class BuildTags
     {
-        public ForgeBaseObject? BaseObjectBuildNumTags { get; set; }
+        public ForgeBaseObject BaseObjectBuildNumTags { get; set; }
         public int NumTags { get; set; }
-        public BuildTag[]? Tags { get; set; }
+        public BuildTag[] Tags { get; set; }
 
         public BuildTags()
         {
@@ -432,7 +432,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class BuildTag
     {
-        public ForgeBaseObject? BaseObjectBuildTag { get; set; }
+        public ForgeBaseObject BaseObjectBuildTag { get; set; }
         public uint EngineTagSave { get; set; }
 
         public BuildTag()
@@ -450,9 +450,9 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class DynamicReference
     {
-        public ForgeBaseObject? BaseObjectDynamicReference { get; set; }
-        public ForgeFileReference? ObjectReference { get; set; }
-        public ForgeObjectPtr? ObjectHandle { get; set; }
+        public ForgeBaseObject BaseObjectDynamicReference { get; set; }
+        public ForgeFileReference ObjectReference { get; set; }
+        public ForgeObjectPtr ObjectHandle { get; set; }
 
         public DynamicReference()
         {
@@ -473,8 +473,8 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class ProgressionCharacterSelector
     {
-        public ForgeBaseObject? BaseObjectProgressionCharacterSelector { get; set; }
-        public ForgeObjectPtr? ProgressionCharacter { get; set; }
+        public ForgeBaseObject BaseObjectProgressionCharacterSelector { get; set; }
+        public ForgeObjectPtr ProgressionCharacter { get; set; }
         public bool UseCurrent { get; set; }
 
         public ProgressionCharacterSelector()
@@ -495,15 +495,15 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class GameplayCoordinatorSettings
     {
-        public ForgeBaseObject? BaseObjectGameplayCoordinatorSettings { get; set; }
+        public ForgeBaseObject BaseObjectGameplayCoordinatorSettings { get; set; }
         public uint PlayMode { get; set; }
-        public ForgeObjectPtr? PlayModeParam { get; set; }
-        public SpawningActionPack? SpawningActionPack { get; set; }
-        public ForgeObjectPtr? CoordinatorActionPack { get; set; }
-        public ForgeObjectPtr? ReferencingActionPack { get; set; }
-        public ForgeObjectPtr? StartupCondition { get; set; }
+        public ForgeObjectPtr PlayModeParam { get; set; }
+        public SpawningActionPack SpawningActionPack { get; set; }
+        public ForgeObjectPtr CoordinatorActionPack { get; set; }
+        public ForgeObjectPtr ReferencingActionPack { get; set; }
+        public ForgeObjectPtr StartupCondition { get; set; }
         public int NumConstraints { get; set; }
-        public ForgeObjectPtr[]? Constraints { get; set; }
+        public ForgeObjectPtr[] Constraints { get; set; }
 
         public GameplayCoordinatorSettings()
         {
@@ -544,13 +544,13 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class SpawningActionPack
     {
-        public ForgeObject? ObjectSpawningActionPack { get; set; }
+        public ForgeObject ObjectSpawningActionPack { get; set; }
         public int NumActionsOnpawn { get; set; }
-        public ForgeObjectPtr[]? ActionsOnSpawn { get; set; }
+        public ForgeObjectPtr[] ActionsOnSpawn { get; set; }
         public int NumActionsOnAcquire { get; set; }
-        public ForgeObjectPtr[]? ActionsOnAcquire { get; set; }
+        public ForgeObjectPtr[] ActionsOnAcquire { get; set; }
         public int NumActionsOnPreUnspawn { get; set; }
-        public ForgeObjectPtr[]? ActionsOnPreUnspawn { get; set; }
+        public ForgeObjectPtr[] ActionsOnPreUnspawn { get; set; }
 
         public SpawningActionPack()
         {
@@ -579,7 +579,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
     public class GameplayCoordinatorOutput
     {
-        public ForgeObject? ObjectGameplayCoordinatorOutput { get; set; }
+        public ForgeObject ObjectGameplayCoordinatorOutput { get; set; }
 
         public GameplayCoordinatorOutput()
         {

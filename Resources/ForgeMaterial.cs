@@ -14,9 +14,9 @@ namespace CodeX.Games.ACOdyssey.Resources
 {
     public class ForgeMaterial
     {
-        public ForgeFileReference? MaterialTemplate { get; set; }
-        public ForgeFileReference? TextureSet { get; set; }
-        public Mask? Mask { get; set; }
+        public ForgeFileReference MaterialTemplate { get; set; }
+        public ForgeFileReference TextureSet { get; set; }
+        public Mask Mask { get; set; }
         public int BlendMode { get; set; }
         public int AlphaDiplayMode { get; set; }
         public byte AlphaTestValue { get; set; }
@@ -53,16 +53,16 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool WaterClipMaterial { get; set; }
         public bool ForceRenderInFakeBucket { get; set; }
         public bool SSAOOnDiffuse { get; set; }
-        public ForgeFileReference? BackFaceMaterial { get; set; }
+        public ForgeFileReference BackFaceMaterial { get; set; }
         public float TangentShift1 { get; set; }
         public float TangentShift2 { get; set; }
         public float DiffuseDarkening { get; set; }
         public float SpecularReflectance1 { get; set; }
         public float SpecularReflectance2 { get; set; }
-        public Mask16b? MaterialMatchMask { get; set; }
+        public Mask16b MaterialMatchMask { get; set; }
         public byte TAADitherFactor { get; set; }
         public int NumProperties { get; set; }
-        public DynamicProperty[]? DynamicProperties { get; set; }
+        public DynamicProperty[] DynamicProperties { get; set; }
 
         public ForgeMaterial()
         {
@@ -156,12 +156,12 @@ namespace CodeX.Games.ACOdyssey.Resources
         public uint DataType { get; set; }
         public uint Type { get; set; }
         public uint Unknown1 { get; set; }
-        public Type? PropertyType { get; set; }
+        public Type PropertyType { get; set; }
         public byte Num { get; set; }
         public long ClassID { get; set; }
         public uint DataType2 { get; set; }
         public bool IsManaged { get; set; }
-        public object? Property { get; set; }
+        public object Property { get; set; }
 
         public DynamicProperty()
         {
@@ -212,8 +212,8 @@ namespace CodeX.Games.ACOdyssey.Resources
         public uint TextureSpecificationMethod { get; set; }
         public ForgeTextureMapType MapType { get; set; }
         public uint FrameNumber { get; set; }
-        public ForgeFileReference? TextureSet { get; set; }
-        public ForgeFileReference? Texture { get; set; }
+        public ForgeFileReference TextureSet { get; set; }
+        public ForgeFileReference Texture { get; set; }
 
         public TextureSelector()
         {
@@ -235,7 +235,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class Mask
     {
-        public ForgeBaseObject? BaseObjectGroupMask { get; set; }
+        public ForgeBaseObject BaseObjectGroupMask { get; set; }
         public byte Bit1 { get; set; }
         public byte Bit2 { get; set; }
         public byte Bit3 { get; set; }
@@ -267,7 +267,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
     public class Mask16b
     {
-        public ForgeBaseObject? BaseObjectMask16b { get; set; }
+        public ForgeBaseObject BaseObjectMask16b { get; set; }
         public byte Mask1 { get; set; }
         public byte Mask2 { get; set; }
         public byte Mask3 { get; set; }
@@ -346,7 +346,7 @@ namespace CodeX.Games.ACOdyssey.Resources
             { 1835008U, typeof(ForgeFileReference) }
         };
 
-        public static Type? GetType(uint value, uint value2)
+        public static Type GetType(uint value, uint value2)
         {
             return ParameterTypes.TryGetValue(value, out var type1) ? type1
                 : ParameterTypes.TryGetValue(value2, out var type2) ? type2
