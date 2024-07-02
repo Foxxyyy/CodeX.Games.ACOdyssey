@@ -158,7 +158,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
             try
             {
                 using BinaryReader br = new BinaryReader(File.OpenRead(GetPhysicalFilePath()));
-                return ExtractFileResource((ForgeEntry)f, br, compressed);
+                return ExtractFileResource((ForgeEntry)f, br);
             }
             catch
             {
@@ -166,11 +166,10 @@ namespace CodeX.Games.ACOdyssey.FORGE
             }
         }
 
-        public byte[] ExtractFileResource(ForgeEntry entry, BinaryReader br, bool compressed = false)
+        public static byte[] ExtractFileResource(ForgeEntry entry, BinaryReader br)
         {
-            byte[] data = new byte[entry.Size];
             br.BaseStream.Seek(entry.Offset, SeekOrigin.Begin);
-            data = br.ReadBytes((int)entry.Size);
+            var data = br.ReadBytes((int)entry.Size);
 
             if (data != null)
             {
@@ -244,8 +243,8 @@ namespace CodeX.Games.ACOdyssey.FORGE
                         entry.Name += ".world";
                         break;
                 }
-                AllEntries.Add(entry);
 
+                AllEntries.Add(entry);
                 if ((entry is GameArchiveFileInfo finfo) && finfo.IsArchive)
                 {
                     entrydict[finfo.Path.ToLowerInvariant()] = finfo;

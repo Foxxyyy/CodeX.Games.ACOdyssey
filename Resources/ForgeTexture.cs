@@ -20,7 +20,6 @@ namespace CodeX.Games.ACOdyssey.Resources
         public bool AllowHWGenerateMips { get; set; }
         public bool DisableProxy { get; set; }
         public uint UserCategory { get; set; }
-        public int TextureDataSize { get; set; }
 
         public ForgeTexture()
         {
@@ -41,7 +40,7 @@ namespace CodeX.Games.ACOdyssey.Resources
 
                 if (header.ResourceIdentifier != ForgeResourceType.TEXTURE_MAP)
                 {
-                    throw new Exception("Not a proper texture map data.");
+                    throw new Exception("Unknown texture map.");
                 }
             }
 
@@ -82,21 +81,11 @@ namespace CodeX.Games.ACOdyssey.Resources
             var ct = new ForgeCompiledTexture();
             ct.ReadCompiledTextureMap(reader);
 
-            //We don't have any CompiledMip texture asociated, load internal CompiledTexture data
-            if (fileIDs[0] == 0 || skipHeader)
-            {
-                TextureDataSize = reader.ReadInt32();
-                Data = reader.ReadBytes(TextureDataSize);
-                Sampler = TextureSampler.Create(TextureSamplerFilter.Anisotropic, TextureAddressMode.Wrap);
-            }
-            else
-            {
-                MipLevels = 1;
-                Sampler = TextureSampler.Create(TextureSamplerFilter.Anisotropic, TextureAddressMode.Wrap);
-            }
+            Data = reader.ReadBytes(ct.CompiledTextureDataSize);
+            Sampler = TextureSampler.Create(TextureSamplerFilter.Anisotropic, TextureAddressMode.Wrap);
         }
 
-        public byte[] ReadMipData(DataReader reader, bool mip0 = true) //CompiledMip //Pedestal_Broken_DiffuseMap
+        public byte[] ReadMipData(DataReader reader) //CompiledMip
         {
             var header = new ForgeDataHeader()
             {
@@ -136,14 +125,16 @@ namespace CodeX.Games.ACOdyssey.Resources
         }
     }
 
-    public class ForgeCompiledTexture : ForgeTexture
+    public class ForgeCompiledTexture : ForgeTexture //CompiledTextureMap
     {
         public uint PlatformVersion { get; set; }
         public uint SDKVersion { get; set; }
-        public uint[] TopMipsSizes { get; set; } = new uint[2];
+        public uint TopMipsSize0 { get; set; }
+        public uint TopMipsSize1 { get; set; }
         public uint TotalTextureSize { get; set; }
         public uint Alignment { get; set; }
         public bool SkipDirectGPUMemoryLoad { get; set; }
+        public int CompiledTextureDataSize { get; set; }
 
         public ForgeCompiledTexture()
         {
@@ -162,12 +153,13 @@ namespace CodeX.Games.ACOdyssey.Resources
             Format = ConvertToFormat((DXT)reader.ReadInt32());
             FTextureFormat = (ForgeTextureFormat)reader.ReadInt32();
             Gamma = (GammaSettings)reader.ReadInt32();
-            TopMipsSizes[0] = reader.ReadUInt32();
-            TopMipsSizes[1] = reader.ReadUInt32();
+            TopMipsSize0 = reader.ReadUInt32();
+            TopMipsSize1 = reader.ReadUInt32();
             TotalTextureSize = reader.ReadUInt32();
             Alignment = reader.ReadUInt32();
             UserCategory = reader.ReadUInt32();
             SkipDirectGPUMemoryLoad = reader.ReadBoolean();
+            CompiledTextureDataSize = reader.ReadInt32();
         }
     }
 

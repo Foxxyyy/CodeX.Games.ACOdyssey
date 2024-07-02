@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeX.Games.ACOdyssey")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fab4f150ac0a2af5aeaebdf86f285ccae49fee5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d0bea18a3fd4d201f0aef9ebfde917a0dee1010")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeX.Games.ACOdyssey")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeX.Games.ACOdyssey")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -15,26 +15,26 @@ namespace CodeX.Games.ACOdyssey.FORGE
             using var stream = new MemoryStream(rawData);
             using var reader = new BinaryReader(stream);
 
-            long[] identifierOffsets = LocateRawDataIdentifier(reader);
+            var identifierOffsets = LocateRawDataIdentifier(reader);
             if (identifierOffsets.Length < 2)
                 return rawData;
 
-            long x = identifierOffsets[1];
-            byte[] decompressed = rawData;
+            var x = identifierOffsets[1];
+            var decompressed = rawData;
 
             //Skip to this Raw Data Block's offset
             reader.BaseStream.Seek(x, SeekOrigin.Begin);
 
             //Header Block
-            long identifier = reader.ReadInt64();
-            short version = reader.ReadInt16();
-            CompressionType compression = (CompressionType)Enum.ToObject(typeof(CompressionType), reader.ReadByte());
+            var identifier = reader.ReadInt64();
+            var version = reader.ReadInt16();
+            var compression = (CompressionType)Enum.ToObject(typeof(CompressionType), reader.ReadByte());
 
             //Skip 4 bytes
             reader.BaseStream.Seek(4, SeekOrigin.Current);
 
             //Block indices
-            int blockCount = reader.ReadInt32();
+            var blockCount = reader.ReadInt32();
             var indices = new Block[blockCount];
             var chunks = new DataChunk[blockCount];
 
@@ -56,19 +56,23 @@ namespace CodeX.Games.ACOdyssey.FORGE
                     Data = reader.ReadBytes(indices[i].CompressedSize)
                 };
 
-                //If the CompressedSize and UncompressedSize do not match, decompress data
-                //Otherwise, the data was not ever compressed
-                return (indices[i].CompressedSize == indices[i].UncompressedSize) ?
-                    chunks[i].Data :
-                    ForgeCompression.Decompress(chunks[i].Data, indices[i].UncompressedSize);
+                //If the compressed and uncompressed size do not match, decompress data
+                chunks[i].UncompressedData = (indices[i].CompressedSize == indices[i].UncompressedSize) ? chunks[i].Data : ForgeCompression.Decompress(chunks[i].Data, indices[i].UncompressedSize);
             }
-            return decompressed;
+
+            //Concatenate all uncompressed data chunks
+            using var outputStream = new MemoryStream();
+            foreach (var chunk in chunks)
+            {
+                outputStream.Write(chunk.UncompressedData, 0, chunk.UncompressedData.Length);
+            }
+            return outputStream.ToArray();
         }
 
         public static byte[] GetBytes(Vector2 v)
         {
-            byte[] x = BitConverter.GetBytes(v.X);
-            byte[] y = BitConverter.GetBytes(v.Y);
+            var x = BitConverter.GetBytes(v.X);
+            var y = BitConverter.GetBytes(v.Y);
             return x.Concat(y).ToArray();
         }
 
@@ -332,6 +336,7 @@ namespace CodeX.Games.ACOdyssey.FORGE
     {
         public int Checksum { get; internal set; }
         public byte[] Data { get; internal set; }
+        public byte[] UncompressedData { get; internal set; }
     }
 
     public enum CompressionType

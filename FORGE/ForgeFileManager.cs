@@ -1,13 +1,13 @@
-﻿using CodeX.Core.Engine;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Collections.Generic;
+using CodeX.Core.Engine;
 using CodeX.Core.Numerics;
 using CodeX.Core.Utilities;
 using CodeX.Games.ACOdyssey.Files;
 using CodeX.Games.ACOdyssey.Resources;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Numerics;
 
 namespace CodeX.Games.ACOdyssey.FORGE
 {
@@ -322,48 +322,66 @@ namespace CodeX.Games.ACOdyssey.FORGE
 
         public override TexturePack LoadTexturePack(GameArchiveFileInfo file, byte[] data = null)
         {
+            //Most of the time, the first two mips are seperated into two different files (sometimes located in different archives)
+            //Here, we are locating the associated mips and concatening all the data into a single byte array
+
             data = EnsureFileData(file, data);
-
-            if (data == null || file is not ForgeEntry entry)
-                return null;
-
-            if (file.NameLower.EndsWith(".texture") && entry.ResourceType == "TEXTURE_MAP")
+            if (data == null || file is not ForgeEntry entry || entry.ResourceType != "TEXTURE_MAP")
             {
-                var tex = new TextureFile(entry);
-                tex.Load(data);
+                return null;
+            }
 
-                //Data is located somewhere else
-                if (tex.Texture != null && tex.Texture.Data != null)
+            var tex = new TextureFile(entry);
+            tex.Load(data);
+
+            //If the texture has no seperated mips, no need to do this
+            if (tex.Texture != null && !file.NameLower.Contains("LOD"))
+            {
+                var name0 = tex.Texture.Name + "_TopMip_0";
+                var name1 = tex.Texture.Name + "_TopMip_1";
+                var mipEntry0 = entry.Archive.AllEntries.FirstOrDefault(e => e.Name == name0);
+                var mipEntry1 = entry.Archive.AllEntries.FirstOrDefault(e => e.Name == name1);
+
+                //The mips are in a different archive
+                if (mipEntry0 == null)
                 {
-                    var mipEntry0 = entry.Archive.AllEntries.FirstOrDefault(e => e.Name == tex.Texture.Name + "_TopMip_0");
-
-                    //Data is in a different archive...
-                    if (mipEntry0 == null)
+                    foreach (var archive in AllArchives)
                     {
-                        foreach (var archive in AllArchives)
+                        mipEntry0 = archive.AllEntries.FirstOrDefault(e => e.Name == name0);
+                        if (mipEntry0 != null) //Assuming both mips are always grouped in the same archive
                         {
-                            mipEntry0 = archive.AllEntries.FirstOrDefault(e => e.Name == tex.Texture.Name + "_TopMip_0");
-                            if (mipEntry0 != null)
-                            {
-                                break;
-                            }
+                            mipEntry1 = archive.AllEntries.FirstOrDefault(e => e.Name == name1);
+                            break;
                         }
                     }
-
-                    var entries = DataFileMgr?.StreamEntries?[ForgeResourceType.MIPMAP];
-                    if (entries.TryGetValue(JenkHash.GenHash(mipEntry0?.Name.ToLowerInvariant()), out ForgeEntry sEntry0))
-                    {
-                        var mipData0 = EnsureFileData(sEntry0, null);
-                        if (mipData0 != null)
-                        {
-                            var mipReader = new DataReader(new MemoryStream(mipData0));
-                            tex.Texture.Data = tex.Texture.ReadMipData(mipReader);
-                        }
-                    }               
                 }
-                return tex;
+
+                var mips = DataFileMgr?.StreamEntries?[ForgeResourceType.MIPMAP];
+                var hash0 = JenkHash.GenHash(mipEntry0?.Name.ToLowerInvariant());
+                var hash1 = JenkHash.GenHash(mipEntry1?.Name.ToLowerInvariant());
+
+                if (mips.TryGetValue(hash0, out ForgeEntry sEntry0) && mips.TryGetValue(hash1, out ForgeEntry sEntry1))
+                {
+                    var mipData0 = EnsureFileData(sEntry0, null);
+                    var mipData1 = EnsureFileData(sEntry1, null);
+
+                    if (mipData0 != null && mipData1 != null)
+                    {
+                        var mipReader0 = new DataReader(new MemoryStream(mipData0));
+                        var mipReader1 = new DataReader(new MemoryStream(mipData1));
+                        var d0 = tex.Texture.ReadMipData(mipReader0);
+                        var d1 = tex.Texture.ReadMipData(mipReader1);
+
+                        //Concatenate the 1st, 2nd top mip data, then the rest into a single byte array
+                        using var ms = new MemoryStream();
+                        ms.Write(d0, 0, d0.Length);
+                        ms.Write(d1, 0, d1.Length);
+                        ms.Write(tex.Texture.Data, 0, tex.Texture.Data.Length);
+                        tex.Texture.Data = ms.ToArray();
+                    }
+                }
             }
-            return null;
+            return tex;
         }
 
         public List<PiecePack> InstanciatePieces(List<PiecePack> pieces, EntityGroupFile groupFile, List<byte[]> data)
